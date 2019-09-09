@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2799511899424654173
+--- !u!1 &7539203064961709900
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,52 +8,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2799511899424654172}
-  - component: {fileID: 4774640461212164253}
-  - component: {fileID: 5497058474228257259}
-  - component: {fileID: 118217639315326831}
+  - component: {fileID: 7539203064961709901}
+  - component: {fileID: 881458891131032716}
+  - component: {fileID: 157632094214202874}
+  - component: {fileID: 5754054763568755582}
   m_Layer: 0
-  m_Name: Portal 1
+  m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2799511899424654172
+--- !u!4 &7539203064961709901
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2799511899424654173}
+  m_GameObject: {fileID: 7539203064961709900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 82.79, y: 3, z: -88.98}
   m_LocalScale: {x: 1, y: 2, z: 3.3715305}
   m_Children:
-  - {fileID: 5489240999424599115}
+  - {fileID: 167987338466365530}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4774640461212164253
+--- !u!65 &881458891131032716
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2799511899424654173}
+  m_GameObject: {fileID: 7539203064961709900}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &5497058474228257259
+--- !u!54 &157632094214202874
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2799511899424654173}
+  m_GameObject: {fileID: 7539203064961709900}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -63,13 +63,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &118217639315326831
+--- !u!114 &5754054763568755582
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2799511899424654173}
+  m_GameObject: {fileID: 7539203064961709900}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77e8add1324f3ad4b8baffb35b613b14, type: 3}
@@ -77,9 +77,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGate: 0
   portalIndex: 0
-  portalSpawn: {fileID: 0}
+  portalSpawn: {fileID: 167987338466365530}
   target: {fileID: 0}
---- !u!1 &3872196633786312183
+--- !u!1 &8918730700932272614
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5489240999424599115}
+  - component: {fileID: 167987338466365530}
   m_Layer: 0
   m_Name: Spawn Point
   m_TagString: Untagged
@@ -95,17 +95,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5489240999424599115
+--- !u!4 &167987338466365530
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3872196633786312183}
+  m_GameObject: {fileID: 8918730700932272614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.840004, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2799511899424654172}
+  m_Father: {fileID: 7539203064961709901}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

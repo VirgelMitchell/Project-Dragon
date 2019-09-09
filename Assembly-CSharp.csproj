@@ -64,10 +64,9 @@
      <Compile Include="Assets\Scripts\Core\FollowCamera.cs" />
      <Compile Include="Assets\Scripts\Core\Health.cs" />
      <Compile Include="Assets\Scripts\Core\IAction.cs" />
-     <Compile Include="Assets\Scripts\Deletables\BugTracking.cs" />
      <Compile Include="Assets\Scripts\Movement\Mover.cs" />
-     <Compile Include="Assets\Scripts\SceneManagement\GateControl.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\GateGuardianControl.cs" />
+     <Compile Include="Assets\Scripts\SceneManagement\Portal.cs" />
      <None Include="Assets\Asset Packs\Animations\README - Usage Rights for these assets 1.txt" />
      <None Include="Assets\Asset Packs\Synty - Polygon Student Sample\README - Usage Rights for these assets.txt" />
      <None Include="Assets\Asset Packs\SkySerie Freebie\Hdri setup.txt" />

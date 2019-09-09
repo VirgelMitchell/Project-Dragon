@@ -22,8 +22,6 @@ namespace RPG.Control
             if (GetComponent<Health>().GetIsDead())     { return; }
             if (InteractWithCombat())                   { return; }
             if (InteractWithMovement())                 { return; }
-            print("Nothing to do joe");
-
         }
 
         private bool InteractWithCombat()
@@ -54,14 +52,12 @@ namespace RPG.Control
                 if (IsValidInput())
                 {
                     int button = GetMouseButton();
-                    Debug.Log ("mouse button = " + button);
                     if (button == 1)        { mover.characterSpeed = "run";    }
                     else if (button == 2)   { mover.characterSpeed = "walk";     }
                     else if (button == 3)   { mover.characterSpeed = "sneak";   }
                     else if (button == 4)   { mover.characterSpeed = "hustle";  }
                     else if (button == 5)   { mover.characterSpeed = "jog";     }
                     else                    { mover.characterSpeed = "idle";    }
-                    Debug.Log("Character is = " + mover.characterSpeed + "ing");
                     mover.StartMoving(hit.point);
                 }
                 return true;
