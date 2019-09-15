@@ -6,16 +6,49 @@ namespace RPG.Combat
 {
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField] float attackRange = 1.5f;
-        [SerializeField] float numOfAttacks = 1f;
-        [SerializeField] float weaponDamage = 1f;
-        [SerializeField] float strBonus = 0f;
-        
-        Transform opponent;
+    // Variables
+        [SerializeField] int numOfAttacks = 1;
+        [SerializeField] int strBonus = 0;
+        [Tooltip("0 =Right hand; 1 = Left hand")]
+        [SerializeField] Transform[] hands = new Transform[2];
+        [SerializeField] Weapon defaultWeapon = null;
+
         float timeSinceLastAttack = Mathf.Infinity;
-        
-        
-        //Public Methods
+
+        Animator animator = null;
+        Weapon currentWeapon = null;
+        Transform opponent = null;
+
+        // Constants
+        const float meleeRound = 6f;
+
+
+    // Basic Methods        
+        private void Awake() { animator = GetComponent<Animator>(); }
+        private void Start() { EquipWeapon(defaultWeapon); }
+
+        private void Update()
+        {
+            timeSinceLastAttack += Time.deltaTime;
+            if (opponent == null) { return; }
+
+            if (!IsInRange())
+            {
+                GetComponent<Mover>().MoveTo(opponent.position);
+            }
+            else
+            {
+                GetComponent<Mover>().CancelAction();
+                AttackBehavior();
+            }
+        }
+
+
+    // Getter Methods
+        public bool GetIsArmed() { return currentWeapon; }
+
+
+    // Public Methods
         public bool CanAttack(GameObject candidate)
         {
             if (candidate == null) { return false; }
@@ -34,68 +67,69 @@ namespace RPG.Combat
             transform.LookAt(position);
         }
 
+        public void EquipWeapon(Weapon weapon)
+        {
+            if (weapon == null) { return; }
+            weapon.EquipWeapon(hands, animator);
+            currentWeapon = weapon;
+        }
+
+        public void DestroyWeapon()
+        {
+            currentWeapon.DestoyWeapon(hands);
+            currentWeapon = null;
+        }
+        
+        
+    // Private Methods
+        private void AttackBehavior()
+        {
+            float weaponSpeed= currentWeapon.GetSpeed();
+            float timeBetweenAttacks = meleeRound / Mathf.Min(numOfAttacks, weaponSpeed);
+
+            animator.ResetTrigger("stopAttack");
+            LookAt(opponent.position);
+            if (timeSinceLastAttack < timeBetweenAttacks) { return; }
+            animator.SetTrigger("attack");
+            timeSinceLastAttack = 0f;
+        }
+
+        private bool IsInRange()
+        {
+            float dist2Tgt = Vector3.Distance(transform.position, opponent.position);
+            return dist2Tgt < currentWeapon.GetRange();
+        }
+
+
+    // IAction Implamentation
         public void CancelAction()
         {
             opponent = null;
             GetComponent<Animator>().SetTrigger("stopAttack");
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Mover>().CancelAction();
-
         }
 
 
-        // Private Methods
-        private void Update()
-        {
-            timeSinceLastAttack += Time.deltaTime;
-
-            if (opponent == null) { return; }
-            
-            if (!IsInRange())
-            {
-                GetComponent<Mover>().MoveTo(opponent.position);
-            }
-            else
-            {
-                GetComponent<Mover>().CancelAction();
-                AttackBehavior();
-            }
-        }
-
-        private void AttackBehavior()
-        {
-            float timeBetweenAttacks = 6f / numOfAttacks;
-
-            GetComponent<Animator>().ResetTrigger("stopAttack");
-            LookAt(opponent.position);
-            if (timeSinceLastAttack < timeBetweenAttacks) { return; }
-            GetComponent<Animator>().SetTrigger("attack");
-            timeSinceLastAttack = 0f;
-        }
-
-        private bool IsInRange()
-        {
-            return Vector3.Distance(transform.position, opponent.position) < attackRange;
-        }
-
-        // Animation triggered events
+    // Animation triggered events
         private void Hit()
         {
             if (opponent == null) { return; }
             Health enemyHealth = opponent.GetComponent<Health>();
             DealDamage(enemyHealth);
             enemyHealth.GetComponent<Fighter>().LookAt(transform.position);
-            if (enemyHealth.GetIsDead())
-            {
-                opponent.GetComponent<Animator>().SetTrigger("onDeath");
-                CancelAction();
-            }
+            if (enemyHealth.GetIsDead()) { CancelAction(); }
         }
 
         private void DealDamage(Health enemyHealth)
         {
-            float damage = weaponDamage + strBonus;
-            enemyHealth.TakeDamage(damage);
+            enemyHealth.TakeDamage(currentWeapon.GetDamage(strBonus));
+        }
+
+        public void Shoot()
+        {
+            currentWeapon.FireProjectile(hands, opponent, strBonus);
+            if (opponent.GetComponent<Health>().GetIsDead()) { CancelAction(); }
         }
     }
 }

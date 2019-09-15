@@ -8,10 +8,13 @@ namespace RPG.Control
 {
     public class PlayerControler : MonoBehaviour
     {
+    // Variables
         Mover mover;
         Fighter fighter;
 
-        void Start()
+
+    // Basic Methods
+        void Awake()
         {
             mover = GetComponent<Mover>();
             fighter = GetComponent<Fighter>();
@@ -24,6 +27,8 @@ namespace RPG.Control
             if (InteractWithMovement())                 { return; }
         }
 
+
+    // Private Methods
         private bool InteractWithCombat()
         {
             RaycastHit[] hits = Physics.RaycastAll(GetRay());
@@ -75,7 +80,7 @@ namespace RPG.Control
             else                                { return 0; }
         }
 
-        bool IsValidInput()
+        private bool IsValidInput()
         {
             if (
                 Input.GetMouseButton(0) ||

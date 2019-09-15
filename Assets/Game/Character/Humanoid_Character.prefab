@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 118765547127298038}
   - component: {fileID: 118765547127298039}
   - component: {fileID: 118765547127298034}
-  - component: {fileID: 118765547127298035}
   - component: {fileID: 529813226}
+  - component: {fileID: 2575497481317590329}
   - component: {fileID: 8726112306510431355}
+  - component: {fileID: 118765547127298035}
   - component: {fileID: 5257120063568345075}
   - component: {fileID: 4380707127442314328}
   m_Layer: 0
@@ -83,7 +84,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118765547127298040}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.33
   m_Height: 2
@@ -111,21 +112,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &118765547127298035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118765547127298040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc06c2b438a3a9749baa238a901323ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseSpeed: 1.524
-  target: {fileID: 0}
-  characterSpeed: idle
 --- !u!95 &529813226
 Animator:
   serializedVersion: 3
@@ -145,6 +131,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2575497481317590329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118765547127298040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1f71711dc84e6498b7913a6dcb7686, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 
 --- !u!114 &8726112306510431355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +156,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4abf0ccf32425bb4facabc4c526dabdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &118765547127298035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118765547127298040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc06c2b438a3a9749baa238a901323ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSpeed: 1.524
+  characterSpeed: idle
 --- !u!114 &5257120063568345075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 470621ca10cb01f48ba5486f7bdac68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 0
+  maximumHP: 1
 --- !u!114 &4380707127442314328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75112c4f95d07294a850c4ae3edb7065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1.5
   numOfAttacks: 1
-  weaponDamage: 1
   strBonus: 0
+  hands:
+  - {fileID: 0}
+  - {fileID: 0}
+  defaultWeapon: {fileID: 11400000, guid: 80b0e38b00e1f5a42afcdb4b718b9d82, type: 2}

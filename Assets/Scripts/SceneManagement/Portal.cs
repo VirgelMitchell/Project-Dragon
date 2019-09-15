@@ -1,5 +1,8 @@
 using System.Collections;
+using RPG.Core;
+using RPG.Movement;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 namespace RPG.SceneManagement
@@ -7,40 +10,27 @@ namespace RPG.SceneManagement
 {
     public class Portal : MonoBehaviour
     {
+    // Variables
+        [Header("General")]
         [SerializeField] bool isGate = false;
-        [SerializeField] int portalIndex = 0;
+        [SerializeField] float fadeTime = 1.5f;
         [SerializeField] Transform portalSpawn = null;
-        [SerializeField] int sceneToLoad = -1;
 
-        public Transform target = null;
+        [Header("Targeting")]
+        [SerializeField] int portalIndex = 0;
+        [SerializeField] int sceneToLoad = -1;
+        [Tooltip("Leave Blank")]public Transform target = null;
 
         bool isActive = true;
 
+
+    // Getter Methods
         public int GetPortalIndex()         { return portalIndex; }
         public Transform GetPortalSpawn()   { return portalSpawn; }
         public void SetActive()             { isActive = !isActive; }
 
-        void OnTriggerEnter(Collider collider)
-        {
-            if(!isGate || isGate && isActive)
-            {
-                if (collider.tag != "Player") { return; }
-                if (isGate && target == null) { return; }
-                StartCoroutine(LoadNextScene());
-            }
-        }
 
-        private IEnumerator LoadNextScene()
-        {
-            DontDestroyOnLoad(gameObject);
-            yield return SceneManager.LoadSceneAsync(sceneToLoad);
-
-            target = SetTarget();
-            UpdatePlayer(target);
-
-            Destroy(gameObject);
-        }
-
+    // Public Mehtods
         public Transform SetTarget()
         {
             Portal[] portals = FindObjectsOfType<Portal>();
@@ -56,11 +46,41 @@ namespace RPG.SceneManagement
             return null;
         }
 
-        void UpdatePlayer(Transform spawnPoint)
+
+    // Private Methods
+        private void OnTriggerEnter(Collider collider)
         {
+            if(!isGate || isGate && isActive)
+            {
+                if (collider.tag != "Player") { return; }
+                if (isGate && target == null) { return; }
+                StartCoroutine(LoadNextScene());
+            }
+        }
+
+        private IEnumerator LoadNextScene()
+        {
+            Fader fader = FindObjectOfType<Fader>();
+            SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
+            
+            DontDestroyOnLoad(gameObject);
+
+            yield return fader.Fade2White(fadeTime);
+            savingWrapper.Save();
+
+            yield return SceneManager.LoadSceneAsync(sceneToLoad);
+
+            savingWrapper.Load();
+            if (!target) { target = SetTarget(); }
+
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            player.transform.position = spawnPoint.position;
-            player.transform.rotation = spawnPoint.rotation;
+            player.GetComponent<Mover>().UpdatePlayer(target);
+            
+            savingWrapper.Save();
+            yield return new WaitForSeconds(fadeTime);
+            yield return fader.FadeIn(fadeTime);
+
+            Destroy(gameObject);
         }
     }
 }

@@ -7,10 +7,14 @@ namespace RPG.Control
 {
     public class AIControler : MonoBehaviour
     {
+    // Variables
+        [Header("Behavior")]
         [SerializeField] float chaseRadius = 5f;
+        [SerializeField] float dwellTime = 2f;
+
+        [Header("Duty")]
         [SerializeField] PatrolPath patrolPath = null;
         [SerializeField] int currentWaypointIndex = 0;
-        [SerializeField] float dwellTime = 2f;
 
         float timeSinceLastSawPlayer = Mathf.Infinity;
         float dwellingAtWaypoint = 0f;
@@ -23,15 +27,18 @@ namespace RPG.Control
 
         const float waypointTollerance = 0.5f;
 
-        private void Start()
+
+    //Basic Methods
+        private void Awake()
         {
             player = GameObject.FindWithTag("Player");
             fighter = GetComponent<Fighter>();
             mover = GetComponent<Mover>();
             guardPosition = transform.position;
             paranoia = Random.Range(1f, 10f);
-            ResumeRoutine();
         }
+
+        private void Start() { ResumeRoutine(); }
 
         private void Update()
         {
@@ -54,9 +61,10 @@ namespace RPG.Control
             {
                 ResumeRoutine();
             }
-            
         }
         
+        
+    // Private Methods
         private void AttackBehavior()
         {
             timeSinceLastSawPlayer = 0f;
@@ -76,21 +84,21 @@ namespace RPG.Control
 
         private void ResumeRoutine()
         {
-            Vector3 nextposition = GetCurrentWaypoint();
-            mover.characterSpeed = "amble";
+            Vector3 nextposition;
 
-            if (patrolPath == null)
+            if (!patrolPath) { nextposition = guardPosition; }
+            else
             {
-                nextposition = guardPosition;
-            }
-            else if (AtWaypoint())
-            {
-                dwellingAtWaypoint = 0f;
-                CycleWaypoint();
+                if (AtWaypoint())
+                {
+                    dwellingAtWaypoint = 0f;
+                    CycleWaypoint();
+                }
                 nextposition = GetCurrentWaypoint();
             }
 
-            GetComponent<Mover>().StartMoving(nextposition);
+            mover.characterSpeed = "amble";
+            mover.StartMoving(nextposition);
         }
 
         private float DistanceToTarget()
@@ -113,12 +121,13 @@ namespace RPG.Control
             return dwellingAtWaypoint >= dwellTime;
         }
         
-        Vector3 GetCurrentWaypoint()
+        private Vector3 GetCurrentWaypoint()
         {
             return patrolPath.GetWaypoint(currentWaypointIndex);
         }
-
-        //Game Engine Visualizations
+        
+        
+    // Game Engine Visualizations
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;

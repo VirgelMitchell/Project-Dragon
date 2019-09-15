@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!54 &1719256483601437966
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703739324690097740}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &3213661336957183992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13,9 +29,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 5
+  dwellTime: 2
   patrolPath: {fileID: 0}
   currentWaypointIndex: 0
-  dwellTime: 2
 --- !u!114 &7703739324690097741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +105,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: bfbe2e8b331e2cc42be1591f949c0e41, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+--- !u!4 &5399926544510791212 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 481036, guid: 30cf93deff988e74e88a144bd2127c18,
+    type: 3}
+  m_PrefabInstance: {fileID: 5399926544510744864}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5399926544510848558 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 423694, guid: 30cf93deff988e74e88a144bd2127c18,
+    type: 3}
+  m_PrefabInstance: {fileID: 5399926544510744864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7731799556275286452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -161,6 +189,38 @@ PrefabInstance:
       propertyPath: hitPoints
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5257120063568345075, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: maximumHP
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380707127442314328, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 80b0e38b00e1f5a42afcdb4b718b9d82,
+        type: 2}
+    - target: {fileID: 4380707127442314328, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: weapLocation
+      value: 
+      objectReference: {fileID: 5399926544510848558}
+    - target: {fileID: 4380707127442314328, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 80b0e38b00e1f5a42afcdb4b718b9d82,
+        type: 2}
+    - target: {fileID: 4380707127442314328, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: hands.Array.data[0]
+      value: 
+      objectReference: {fileID: 5399926544510848558}
+    - target: {fileID: 4380707127442314328, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: hands.Array.data[1]
+      value: 
+      objectReference: {fileID: 5399926544510791212}
     - target: {fileID: 118765547127298034, guid: c46bf355de73c7b42842986ec621931a,
         type: 3}
       propertyPath: m_Speed

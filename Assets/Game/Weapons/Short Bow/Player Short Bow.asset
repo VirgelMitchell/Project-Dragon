@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 836bda9924196aa41990e5bee0c3ea3a, type: 3}
+  m_Name: Player Short Bow
+  m_EditorClassIdentifier: 
+  weapAnimControl: {fileID: 22100000, guid: d1c3a373f277d814f88f1cfbbbc68a73, type: 2}
+  equippedPrefab: {fileID: 3671132605656441007, guid: f8fc06ebd74f29043b3ff960d92bfa8f,
+    type: 3}
+  projectile: {fileID: 1446835832812727987, guid: 0d694447a05b20040ad03b2ac8bc8899,
+    type: 3}
+  canUseOffHand: 0
+  is2Handed: 1
+  attackRange: 182.88
+  maxDamage: 6
+  projectileSpeed: 68.58
+  weaponSpeed: 2

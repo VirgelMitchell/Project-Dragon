@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using RPG.Core;
+using UnityEngine;
 using UnityEngine.Playables;
 
 namespace RPG.Cinematics
 {
 
-    public class CinematicTrigger : MonoBehaviour
+    public class CinematicTrigger : MonoBehaviour, ISavable
     {
         bool hasBeenTriggered = false;
 
@@ -16,5 +17,9 @@ namespace RPG.Cinematics
                 hasBeenTriggered = true;
             }
         }
+
+    // ISavable Implamentation
+        public object   CaptureState()              { return hasBeenTriggered; }
+        public void     RestoreState(object state)  { hasBeenTriggered = (bool)state; }
     }
 }

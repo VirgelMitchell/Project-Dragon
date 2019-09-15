@@ -2,26 +2,54 @@
 
 namespace RPG.Core
 {
-    public class Health : MonoBehaviour
+    public class Health : MonoBehaviour, ISavable
     {
-        [SerializeField] float hitPoints;
+    // Variables
+        [SerializeField] int maximumHP = 1;
+
+        int currentHP;
         bool isDead = false;
 
-        public bool GetIsDead()     { return isDead; }
 
-        public void TakeDamage(float damage)
+    // Basic Methods
+        private void Start() { currentHP = maximumHP; }
+
+
+    // Getter Methods
+        public bool GetIsDead() { return isDead; }
+
+
+    // Public Methods
+        public void TakeDamage(int damage)
         {
             if (!isDead)
             {
-                hitPoints = Mathf.Max(hitPoints - damage, 0);
-                if (hitPoints <= 0)
-                {
-                    GetComponent<Animator>().SetTrigger("onDeath");
-                    GetComponent<ActionScheduler>().CancelAction();
-                    isDead = true;
-                }
+                currentHP = Mathf.Max(currentHP - damage, 0);
+                if (currentHP <= 0) { Die(); }
             }
         }
-    }
+    
 
+    // Private Methods
+        private void Die()
+        {
+            GetComponent<Animator>().SetTrigger("onDeath");
+            GetComponent<ActionScheduler>().CancelAction();
+            isDead = true;
+        }
+
+
+    // ISavable Implamentation
+
+        public object CaptureState()
+        {
+            return currentHP;
+        }
+
+        public void RestoreState(object state)
+        {
+            currentHP = (int)state;
+            if (currentHP <= 0) { Die(); }
+        }
+    }
 }

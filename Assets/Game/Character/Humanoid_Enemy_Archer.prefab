@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5314940071596968312
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7703739324690097740, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: m_Name
+      value: Humanoid_Enemy_Archer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 72.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -52.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9466099
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.32238117
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 142.386
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213661336957183992, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: chaseRadius
+      value: 18.288
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213661336957183992, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: patrolPath
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213661336957183992, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: dwellTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5256509915632407693, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: uniqueID
+      value: 9d9882ac-1e50-4e7c-bdfb-6c9ab798630f
+      objectReference: {fileID: 0}
+    - target: {fileID: 2574322185310979655, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: hitPoints
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2574322185310979655, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: maximumHP
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307215787345520108, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 7154b49f9f550c341a2f1e0303e8b349,
+        type: 2}
+    - target: {fileID: 6307215787345520108, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: numOfAttacks
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719256483601437966, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5b6f488b082580247b1b7a0e9dbf9112, type: 3}

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RPG.Core
 {
@@ -11,7 +9,6 @@ namespace RPG.Core
         void LateUpdate()
         {
             transform.position = target.position;
-
         }
     }
 }

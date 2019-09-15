@@ -78,6 +78,8 @@ MonoBehaviour:
   isGate: 0
   portalIndex: 0
   portalSpawn: {fileID: 167987338466365530}
+  sceneToLoad: -1
+  fadeTime: 1.5
   target: {fileID: 0}
 --- !u!1 &8918730700932272614
 GameObject:

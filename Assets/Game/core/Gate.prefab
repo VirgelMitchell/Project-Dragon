@@ -77,4 +77,6 @@ MonoBehaviour:
   isGate: 1
   portalIndex: 0
   portalSpawn: {fileID: 0}
+  sceneToLoad: -1
+  fadeTime: 1.5
   target: {fileID: 0}
