@@ -55,11 +55,12 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Cinematics\CinematicTrigger.cs" />
      <Compile Include="Assets\Scripts\Cinematics\ControlRemover.cs" />
+     <Compile Include="Assets\Scripts\Combat\Collectable.cs" />
      <Compile Include="Assets\Scripts\Combat\CombatTarget.cs" />
      <Compile Include="Assets\Scripts\Combat\Fighter.cs" />
      <Compile Include="Assets\Scripts\Combat\Projectile.cs" />
+     <Compile Include="Assets\Scripts\Combat\Spell.cs" />
      <Compile Include="Assets\Scripts\Combat\Weapon.cs" />
-     <Compile Include="Assets\Scripts\Combat\WeaponPickup.cs" />
      <Compile Include="Assets\Scripts\Control\AIControler.cs" />
      <Compile Include="Assets\Scripts\Control\PatrolPath.cs" />
      <Compile Include="Assets\Scripts\Control\PlayerControler.cs" />
@@ -70,6 +71,7 @@
      <Compile Include="Assets\Scripts\Core\IAction.cs" />
      <Compile Include="Assets\Scripts\Core\ISavable.cs" />
      <Compile Include="Assets\Scripts\Core\PersistantObjectSpawner.cs" />
+     <Compile Include="Assets\Scripts\Magic\CastSpell.cs" />
      <Compile Include="Assets\Scripts\Movement\Mover.cs" />
      <Compile Include="Assets\Scripts\Saving\SavableEntity.cs" />
      <Compile Include="Assets\Scripts\Saving\SavingSystem.cs" />
@@ -77,6 +79,7 @@
      <Compile Include="Assets\Scripts\SceneManagement\GateGuardianControl.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\Portal.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\SavingWrapper.cs" />
+     <Compile Include="Assets\TempObject.cs" />
      <None Include="Assets\Asset Packs\Animations\README - Usage Rights for these assets 1.txt" />
      <None Include="Assets\Asset Packs\Synty - Polygon Student Sample\README - Usage Rights for these assets.txt" />
      <None Include="Assets\Asset Packs\SkySerie Freebie\Hdri setup.txt" />

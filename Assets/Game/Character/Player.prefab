@@ -153,6 +153,22 @@ PrefabInstance:
       propertyPath: hands.Array.data[0]
       value: 
       objectReference: {fileID: 8231276832361346444}
+    - target: {fileID: 4380707127442314328, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: characterLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380707127442314328, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: defaultSpell
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380707127442314328, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 80b0e38b00e1f5a42afcdb4b718b9d82,
+        type: 2}
     - target: {fileID: 118765547127298034, guid: c46bf355de73c7b42842986ec621931a,
         type: 3}
       propertyPath: m_Enabled

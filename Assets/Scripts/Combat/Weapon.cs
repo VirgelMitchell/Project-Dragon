@@ -35,7 +35,11 @@ namespace RPG.Combat
     // Public Methods
         public void EquipWeapon(Transform[] hands, Animator animator)
         {
-            if (!equippedPrefab || !weapAnimControl) { return; }
+            if (!equippedPrefab || !weapAnimControl)
+            {
+                Debug.LogError("ORIO: Are you missing the Equipped Weapon Prefab or Animation Override Controller");
+                return;
+            }
             Transform weapLocation = GetWeapTransform(hands);
             GameObject weapon = Instantiate(equippedPrefab, weapLocation);
             weapon.name = weapName;
@@ -56,19 +60,11 @@ namespace RPG.Combat
 
         public void DestoyWeapon(Transform[] hands)
         {
-            GameObject oldWeap;
-            foreach (Transform hand in hands)
-            {
-                if(GameObject.Find(weapName))
-                {
-                    oldWeap = GameObject.Find(weapName);
-                    if(oldWeap)
-                    {
-                        oldWeap.name = "OldWeapon";
-                        Destroy(oldWeap);
-                    }
-                }
-            }
+            Transform oldWeap = hands[0].Find(weapName);
+            if (oldWeap == null) { oldWeap = hands[1].Find(weapName); }
+            if (oldWeap == null) { return; }
+            oldWeap.name = "OldWeapon";
+            Destroy(oldWeap.gameObject);
         }
 
 

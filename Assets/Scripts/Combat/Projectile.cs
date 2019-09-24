@@ -45,7 +45,8 @@ namespace RPG.Combat
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<Health>() != target) { return; }
+            Health candidate = other.GetComponent<Health>();
+            if (candidate != target || candidate.GetIsDead()) { return; }
             target.TakeDamage(damage);
             Destroy(gameObject);
         }

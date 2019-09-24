@@ -62,8 +62,8 @@ namespace RPG.Control
                 ResumeRoutine();
             }
         }
-        
-        
+
+
     // Private Methods
         private void AttackBehavior()
         {

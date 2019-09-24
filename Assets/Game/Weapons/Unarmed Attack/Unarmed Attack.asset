@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836bda9924196aa41990e5bee0c3ea3a, type: 3}
   m_Name: Unarmed Attack
   m_EditorClassIdentifier: 
-  equippedPrefab: {fileID: 0}
-  weapAnimControl: {fileID: 0}
-  canUseOffHand: 1
+  weapAnimControl: {fileID: 22100000, guid: d293a4b1e8ae8cd4cb18c3bf4057e0fd, type: 2}
+  equippedPrefab: {fileID: 6857842027833518193, guid: a88af80bff56bfb40b2b3384ae30200e,
+    type: 3}
+  projectile: {fileID: 0}
   is2Handed: 0
   attackRange: 1.25
   maxDamage: 1
+  projectileSpeed: 0
   weaponSpeed: 2
