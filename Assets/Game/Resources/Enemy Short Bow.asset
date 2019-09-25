@@ -17,7 +17,6 @@ MonoBehaviour:
     type: 3}
   projectile: {fileID: 7569317464049456960, guid: ca7e2fcea57188e41957c4691f893612,
     type: 3}
-  canUseOffHand: 0
   is2Handed: 1
   attackRange: 182.88
   maxDamage: 6

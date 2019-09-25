@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 836bda9924196aa41990e5bee0c3ea3a, type: 3}
   m_Name: Long Sword
   m_EditorClassIdentifier: 
+  weapAnimControl: {fileID: 22100000, guid: 8c93949cb25283f40b732437c3390f5f, type: 2}
   equippedPrefab: {fileID: 3803292074541200331, guid: 14d274d99a8d3ca44adb4a0b72337e47,
     type: 3}
-  weapAnimControl: {fileID: 22100000, guid: 8c93949cb25283f40b732437c3390f5f, type: 2}
+  projectile: {fileID: 0}
+  is2Handed: 0
   attackRange: 2.5
   maxDamage: 8
+  projectileSpeed: 0
   weaponSpeed: 4

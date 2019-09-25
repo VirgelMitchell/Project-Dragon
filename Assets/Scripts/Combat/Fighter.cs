@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction
+    public class Fighter : MonoBehaviour, IAction, ISavable
     {
         // Variables
         [SerializeField] int characterLevel = 0;
@@ -12,8 +12,8 @@ namespace RPG.Combat
         [SerializeField] int strBonus = 0;
         [Tooltip("0 =Right hand; 1 = Left hand")]
         [SerializeField] Transform[] hands = new Transform[2];
-        [SerializeField] Weapon defaultWeapon = null;
-        [SerializeField] Spell defaultSpell = null;
+        [SerializeField] string defaultWeaponName = "Unarmed Attack";
+        [SerializeField] string defaultSpellName = "";
 
         float timeSinceLastAttack = Mathf.Infinity;
 
@@ -34,8 +34,13 @@ namespace RPG.Combat
 
         private void Start()
         {
-            EquipWeapon(defaultWeapon);
-            EquipSpell(defaultSpell);
+            if (currentSpell == null && currentWeapon == null)
+            {
+                Weapon defaultWeapon = Resources.Load<Weapon>(defaultWeaponName);
+                Spell defaultSpell = Resources.Load<Spell>(defaultSpellName);
+                EquipWeapon(defaultWeapon);
+                EquipSpell(defaultSpell);
+            }
         }
 
         private void Update()
@@ -147,6 +152,27 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger("stopAttack");
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Mover>().CancelAction();
+        }
+
+
+    // ISavable Implamentation
+        public object CaptureState()
+        {
+            if (currentWeapon) { return currentWeapon.name; }
+            else if (currentSpell) { return currentSpell.name; }
+            else { return "Unarmed Attack"; }
+        }
+
+        public void RestoreState(object state)
+        {
+            Weapon weapon = Resources.Load<Weapon>(state.ToString());
+            if (weapon) { EquipWeapon(weapon); }
+            else
+            {
+                Spell spell = Resources.Load<Spell>(state.ToString());
+                if (spell) { EquipSpell(spell); }
+                else { EquipWeapon(Resources.Load<Weapon>("Unarmed Attack")); }
+            }
         }
 
 

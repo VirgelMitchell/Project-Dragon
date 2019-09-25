@@ -15,37 +15,37 @@ PrefabInstance:
     - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 72.71
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -52.79
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9466099
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.32238117
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
@@ -60,7 +60,7 @@ PrefabInstance:
     - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 142.386
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
@@ -107,6 +107,11 @@ PrefabInstance:
         type: 3}
       propertyPath: numOfAttacks
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307215787345520108, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: defaultWeaponName
+      value: Enemy Short Bow
       objectReference: {fileID: 0}
     - target: {fileID: 1719256483601437966, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
