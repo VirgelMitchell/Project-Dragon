@@ -1,18 +1,19 @@
 ﻿using RPG.Combat;
-using RPG.Core;
 using RPG.Movement;
+using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Control
 {
-    public class PlayerControler : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
     // Variables
         Mover mover;
         Fighter fighter;
+        private float timeSinceLastAttacked;
 
 
-    // Basic Methods
+        // Basic Methods
         void Awake()
         {
             mover = GetComponent<Mover>();
@@ -21,13 +22,24 @@ namespace RPG.Control
         
         void Update()
         {
+            UpdateTimers();
             if (GetComponent<Health>().GetIsDead())     { return; }
             if (InteractWithCombat())                   { return; }
             if (InteractWithMovement())                 { return; }
         }
 
 
+        // Public Methods
+        public void ResetTimeSinceAttacked() { timeSinceLastAttacked = 0f; }
+        public float GetTimeSinceLastAttacked() { return timeSinceLastAttacked; }
+
+
     // Private Methods
+        private void UpdateTimers()
+        {
+            timeSinceLastAttacked += Time.deltaTime;
+        }
+
         private bool InteractWithCombat()
         {
             RaycastHit[] hits = Physics.RaycastAll(GetRay());

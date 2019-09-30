@@ -1,5 +1,6 @@
 using RPG.Core;
 using RPG.Movement;
+using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -8,9 +9,8 @@ namespace RPG.Combat
     {
         // Variables
         [SerializeField] int characterLevel = 0;
-        [SerializeField] int numOfAttacks = 1;
         [SerializeField] int strBonus = 0;
-        [Tooltip("0 =Right hand; 1 = Left hand")]
+        [Tooltip("0 = Right hand; 1 = Left hand")]
         [SerializeField] Transform[] hands = new Transform[2];
         [SerializeField] string defaultWeaponName = "Unarmed Attack";
         [SerializeField] string defaultSpellName = "";
@@ -18,18 +18,22 @@ namespace RPG.Combat
         float timeSinceLastAttack = Mathf.Infinity;
 
         Animator animator = null;
+        BaseStats baseStats;
         Weapon currentWeapon = null;
         Spell currentSpell = null;
+        GameObject me;
         Transform opponent = null;
 
-        // Constants
+    // Constants
         const float meleeRound = 6f;
 
 
-    // Basic Methods        
+        // Basic Methods
         private void Awake()
         {
             animator = GetComponent<Animator>();
+            me = this.gameObject;
+            baseStats = GetComponent<BaseStats>();
         }
 
         private void Start()
@@ -61,10 +65,11 @@ namespace RPG.Combat
 
 
     // Getter Methods
-        public bool GetIsArmed() { return currentWeapon || currentSpell; }
+        public bool GetIsArmed()        { return currentWeapon || currentSpell; }
+        public Transform GetTarget()    { return opponent; }
 
 
-    // Public Methods
+        // Public Methods
         public bool CanAttack(GameObject candidate)
         {
             if (candidate == null) { return false; }
@@ -96,24 +101,22 @@ namespace RPG.Combat
             spell.EquipSpell(hands, animator);
             currentSpell = spell;
         }
-        
+
         public void DestroyWeapon()
         {
             if (currentWeapon)
             {
-                Debug.Log("destroying" + currentWeapon);
-                currentWeapon.DestoyWeapon(hands);
+                currentWeapon.DestoyWeapon(hands, currentWeapon.ToString());
             }
             currentWeapon = null;
             if (currentSpell)
             {
-                Debug.Log("destroying" + currentSpell);
-                currentSpell.DestoySpell(hands);
+                currentSpell.DestoySpell(hands, currentSpell.ToString());
             }
             currentSpell = null;
         }
-        
-        
+
+
     // Private Methods
         private void AttackBehavior()
         {
@@ -126,9 +129,10 @@ namespace RPG.Combat
             float weaponSpeed;
             if (currentWeapon) { weaponSpeed = currentWeapon.GetSpeed(); }
             else { weaponSpeed = currentSpell.GetSpeed(); }
+            int numOfAttacks = baseStats.GetStat(Stat.numberOfAttacks);
             float timeBetweenAttacks = meleeRound / Mathf.Min(numOfAttacks, weaponSpeed);
             if (timeSinceLastAttack < timeBetweenAttacks) { return; }
-            
+
             animator.ResetTrigger("stopAttack");
             LookAt(opponent.position);
             animator.SetTrigger("attack");
@@ -182,7 +186,7 @@ namespace RPG.Combat
             if (opponent == null) { return; }
             if (currentSpell)
             {
-                currentSpell.CastSpell(hands, opponent, characterLevel);
+                currentSpell.CastSpell(me, opponent, hands, characterLevel);
             }
             else
             {
@@ -194,12 +198,12 @@ namespace RPG.Combat
 
         private void DealDamage(Health enemyHealth)
         {
-            enemyHealth.TakeDamage(currentWeapon.GetDamage(strBonus));
+            enemyHealth.TakeDamage(me, currentWeapon.GetDamage(strBonus));
         }
 
         public void Shoot()
         {
-            currentWeapon.FireProjectile(hands, opponent, strBonus);
+            currentWeapon.FireProjectile(me, opponent, hands, strBonus);
         }
     }
 }

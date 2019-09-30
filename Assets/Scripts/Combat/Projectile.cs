@@ -1,4 +1,4 @@
-using RPG.Core;
+using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -11,6 +11,7 @@ namespace RPG.Combat
         float speed = 0f;
 
         Health target = null;
+        GameObject instigater;
 
         // Basic Methods
         void Start()
@@ -34,6 +35,11 @@ namespace RPG.Combat
         public void SetRange(float rng)         { range = rng; }
         public void SetSpeed(float spd)         { speed = spd; }
 
+        public void SetInstigater(GameObject shooter)
+        {
+            instigater = shooter;
+        }
+
 
         // Private Methods
         private Vector3 GetPosition()
@@ -47,7 +53,7 @@ namespace RPG.Combat
         {
             Health candidate = other.GetComponent<Health>();
             if (candidate != target || candidate.GetIsDead()) { return; }
-            target.TakeDamage(damage);
+            target.TakeDamage(instigater, damage);
             Destroy(gameObject);
         }
     }

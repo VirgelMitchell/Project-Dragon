@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 529813226}
   - component: {fileID: 2575497481317590329}
   - component: {fileID: 8726112306510431355}
+  - component: {fileID: 4508130347158373242}
   - component: {fileID: 118765547127298035}
   - component: {fileID: 5257120063568345075}
   - component: {fileID: 4380707127442314328}
@@ -156,6 +157,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4abf0ccf32425bb4facabc4c526dabdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4508130347158373242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118765547127298040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 601392deeee202b4b8058e583aa37c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progression: {fileID: 11400000, guid: 18d0816b08e95274c9dd8412d9e1e448, type: 2}
+  characterClass: 0
+  startingLevel: 0
 --- !u!114 &118765547127298035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,9 +211,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75112c4f95d07294a850c4ae3edb7065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterLevel: 0
   numOfAttacks: 1
   strBonus: 0
   hands:
   - {fileID: 0}
   - {fileID: 0}
-  defaultWeapon: {fileID: 11400000, guid: 80b0e38b00e1f5a42afcdb4b718b9d82, type: 2}
+  defaultWeaponName: Unarmed Attack
+  defaultSpellName: 

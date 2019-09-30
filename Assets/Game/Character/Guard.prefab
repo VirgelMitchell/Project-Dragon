@@ -16,7 +16,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3213661336957183992
+--- !u!114 &4479320036466426939
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25,7 +25,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7703739324690097740}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 712963e20e46f6e4d9421abd58e8e7f6, type: 3}
+  m_Script: {fileID: 11500000, guid: eb1b5154f57b1c746a45c069fcdbbb89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 5
@@ -127,7 +127,7 @@ PrefabInstance:
     - target: {fileID: 118765547127298040, guid: c46bf355de73c7b42842986ec621931a,
         type: 3}
       propertyPath: m_Name
-      value: Humanoid_Enemy
+      value: Guard
       objectReference: {fileID: 0}
     - target: {fileID: 118765547127298036, guid: c46bf355de73c7b42842986ec621931a,
         type: 3}
@@ -193,6 +193,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maximumHP
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508130347158373242, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: characterClass
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4380707127442314328, guid: c46bf355de73c7b42842986ec621931a,
         type: 3}

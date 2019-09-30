@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using RPG.Core;
+using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Magic
@@ -10,9 +11,10 @@ namespace RPG.Magic
         [SerializeField] ParticleSystem damageEffect = null;
 
         float areaOfEffct = 0f;
-        string attackType = "";
+        AttackType attackType;
         int damage = 0;
         float distanceTraveled = 0;
+        GameObject instigater = null;
         bool isHoming = false;
         int numberOfTarges = 0;
         float range = 0f;
@@ -46,7 +48,7 @@ namespace RPG.Magic
             distanceTraveled += Vector3.Distance(pos2, pos1);
             if (distanceTraveled > range)
             {
-                if(attackType != "area") {Destroy(gameObject); }
+                if(attackType != AttackType.area) {Destroy(gameObject); }
                 else { DealAreaDamage(); }
             }
         }
@@ -54,10 +56,9 @@ namespace RPG.Magic
         
     // Setter Methods
         public void SetArea(float area) { areaOfEffct = area; }
-
         public void SetDamage(int dmg) { damage = dmg; }
-
         public void SetRange(float rng) { range = rng;; }
+        public void SetSpeed(float spd) { speed = spd; }
 
         public void SetTarget(Health health, bool homing)
         {
@@ -65,13 +66,17 @@ namespace RPG.Magic
             isHoming = homing;
         }
 
-        public void SetType(string attack, int targets)
+        public void SetType(AttackType attack, int targets)
         {
             attackType = attack;
             numberOfTarges = targets;
         }
+
+        public void SetInstigater(GameObject caster)
+        {
+            instigater = caster;
+        }
         
-        public void SetSpeed(float spd) { speed = spd; }
 
     
     // Private Methods
@@ -91,8 +96,8 @@ namespace RPG.Magic
             if (candidate != target || candidate.GetIsDead()) { return; }
             InstantiateDamageEffect();
             castingEffect.Stop();
-            if (attackType == "area") { DealAreaDamage(); }
-            else { candidate.TakeDamage(damage); }
+            if (attackType == AttackType.area) { DealAreaDamage(); }
+            else { candidate.TakeDamage(instigater, damage); }
             Destroy(gameObject);
         }
 
@@ -104,7 +109,7 @@ namespace RPG.Magic
                 Vector3 pos1 = transform.position;
                 Vector3 pos2 = target.transform.position;
                 float damageModifier = 1 - (Vector3.Distance(pos1, pos2)/areaOfEffct);
-                target.TakeDamage((int)(damageModifier * damage));
+                target.TakeDamage(instigater, (int)(damageModifier * damage));
             }
         }
 

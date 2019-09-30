@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7703739324690097740, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: m_Name
-      value: Humanoid_Enemy_Archer
+      value: Archer
       objectReference: {fileID: 0}
     - target: {fileID: 7703739324690097728, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
@@ -97,6 +97,16 @@ PrefabInstance:
       propertyPath: maximumHP
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6187037765184991950, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: startingLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187037765184991950, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: characterClass
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6307215787345520108, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: defaultWeapon
@@ -118,5 +128,11 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4479320036466426939, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: chaseRadius
+      value: 18.32
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3213661336957183992, guid: 5b6f488b082580247b1b7a0e9dbf9112, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5b6f488b082580247b1b7a0e9dbf9112, type: 3}

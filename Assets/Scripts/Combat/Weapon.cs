@@ -1,4 +1,4 @@
-using RPG.Core;
+using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -20,7 +20,6 @@ namespace RPG.Combat
         [Tooltip("number of attacks per melee round")]
         [SerializeField] int weaponSpeed = 0;
 
-        enum Hand { left, right };
         
     // Constants
         const string weapName = "Weapon";
@@ -42,11 +41,12 @@ namespace RPG.Combat
             }
             Transform weapLocation = GetWeapTransform(hands);
             GameObject weapon = Instantiate(equippedPrefab, weapLocation);
+            weapon.transform.parent = weapLocation;
             weapon.name = weapName;
             animator.runtimeAnimatorController = weapAnimControl;
         }
 
-        public void FireProjectile(Transform[] hands, Transform target, int strBonus)
+        public void FireProjectile(GameObject instigator, Transform target, Transform[] hands, int strBonus)
         {
             Vector3 startLoc = GetWeapTransform(hands).position;
             Projectile projectileInst = Instantiate(projectile, startLoc, Quaternion.identity);
@@ -55,14 +55,19 @@ namespace RPG.Combat
             projectileInst.SetRange(attackRange);
             projectileInst.SetDamage(CalculateDamage(strBonus));
             projectileInst.SetSpeed(projectileSpeed);
+            projectileInst.SetInstigater(instigator);
             // TODO decrease projectile count in inventory
         }
 
-        public void DestoyWeapon(Transform[] hands)
+        public void DestoyWeapon(Transform[] hands, string currentWeapon)
         {
             Transform oldWeap = hands[0].Find(weapName);
             if (oldWeap == null) { oldWeap = hands[1].Find(weapName); }
-            if (oldWeap == null) { return; }
+            if (oldWeap == null)
+            {
+                Debug.LogWarning("No Weapon Found");
+                return;
+            }
             oldWeap.name = "OldWeapon";
             Destroy(oldWeap.gameObject);
         }

@@ -1,6 +1,6 @@
-using System.Collections;
 using RPG.Core;
 using RPG.Magic;
+using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -10,8 +10,9 @@ namespace RPG.Combat
     {
         [Header("General Info")]
         [SerializeField] string spellName = "";
-        [SerializeField] string[] casterClass;
-        [SerializeField] int spellLevel = 0;
+        [SerializeField] CasterClass[] casterClass;
+        [SerializeField] School school;
+        [Range(0f, 10f)][SerializeField] int spellLevel = 0;
 
         [Header("Stats")]
         [SerializeField] CastingSpeed castingSpeed = CastingSpeed.other;
@@ -31,12 +32,6 @@ namespace RPG.Combat
         [SerializeField] GameObject effectPrefab = null;
         [SerializeField] AnimatorOverrideController animationController = null;
 
-        enum AttackType { area, ranged, touch };
-        enum CasterClass{cleric, druid, palidine, ranger, sorceror, wizard}
-        enum CastingSpeed { full, instant, standard, other };
-        enum Range { close, far, given, medium, personal, touch };
-        enum School { evokation };
-        
         Fighter caster = null;
         CastSpell castSpell;
         Transform tempObject;
@@ -55,7 +50,8 @@ namespace RPG.Combat
         private void Awake()
         {
             castSpell = effectPrefab.GetComponent<CastSpell>();
-            tempObject = FindObjectOfType<TempObject>().transform;
+            TempObject tempObj = FindObjectOfType<TempObject>();
+            tempObject = tempObj.transform;
         }
 
 
@@ -102,11 +98,12 @@ namespace RPG.Combat
                 return;
             }
             GameObject spell = Instantiate(new GameObject(spellName), hands[0]);
-            spell.transform.parent = hands[0].transform.parent;
+            spell.transform.parent = hands[0].transform;
             animator.runtimeAnimatorController = animationController;
         }
 
-        public void CastSpell(Transform[] hands, Transform target, int level)
+        public void CastSpell ( GameObject instigater, Transform target,
+                                Transform[] hands, int level)
         {
             if (spellLevel < level) { return; }
             Vector3 startLoc = hands[0].position;
@@ -118,15 +115,20 @@ namespace RPG.Combat
             spellInstance.SetRange(GetRange(level));
             spellInstance.SetSpeed(speed);
             spellInstance.SetDamage(CalculateDamage(level));
-            spellInstance.SetType(attackType.ToString(), numberOfTargets);
+            spellInstance.SetType(attackType, numberOfTargets);
+            spellInstance.SetInstigater(instigater);
             // TODO decrease mana/magical energy count in inventory
         }
 
-        public void DestoySpell(Transform[] hands)
+        public void DestoySpell(Transform[] hands, string currentSpell)
         {
             Transform oldSpell = hands[0].Find(spellName);
             if (oldSpell == null) { oldSpell = hands[1].Find(spellName); }
-            if (oldSpell == null) { return; }
+            if (oldSpell == null)
+            {
+                Debug.LogWarning("No Spell Found");
+                return;
+            }
             oldSpell.name = "OldSpell";
             Destroy(oldSpell.gameObject);
         }

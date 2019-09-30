@@ -1,11 +1,12 @@
 ﻿using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
+using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Control
 {
-    public class AIControler : MonoBehaviour
+    public class AIController : MonoBehaviour
     {
     // Variables
         [Header("Behavior")]
@@ -17,6 +18,7 @@ namespace RPG.Control
         [SerializeField] int currentWaypointIndex = 0;
 
         float timeSinceLastSawPlayer = Mathf.Infinity;
+        float timeSinceLastAttacked = Mathf.Infinity;
         float dwellingAtWaypoint = 0f;
         float paranoia;
         
@@ -62,6 +64,11 @@ namespace RPG.Control
                 ResumeRoutine();
             }
         }
+
+
+    // Public Methods
+        public void ResetTimeSinceAttacked()    { timeSinceLastAttacked = 0; }
+        public float GetTimeSinceLastAttacked() { return timeSinceLastAttacked; }
 
 
     // Private Methods
