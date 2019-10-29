@@ -67,25 +67,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3213661336957183992, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+    - target: {fileID: 4479320036466426939, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: chaseRadius
-      value: 18.288
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213661336957183992, guid: 5b6f488b082580247b1b7a0e9dbf9112,
-        type: 3}
-      propertyPath: patrolPath
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3213661336957183992, guid: 5b6f488b082580247b1b7a0e9dbf9112,
-        type: 3}
-      propertyPath: dwellTime
-      value: 8
+      value: 18.32
       objectReference: {fileID: 0}
     - target: {fileID: 5256509915632407693, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: uniqueID
       value: 9d9882ac-1e50-4e7c-bdfb-6c9ab798630f
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187037765184991950, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: pcClassStartLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187037765184991950, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: challengeRating
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2574322185310979655, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
@@ -96,16 +96,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maximumHP
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6187037765184991950, guid: 5b6f488b082580247b1b7a0e9dbf9112,
-        type: 3}
-      propertyPath: startingLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6187037765184991950, guid: 5b6f488b082580247b1b7a0e9dbf9112,
-        type: 3}
-      propertyPath: characterClass
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6307215787345520108, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
@@ -128,10 +118,20 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4479320036466426939, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+    - target: {fileID: 3213661336957183992, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: chaseRadius
-      value: 18.32
+      value: 18.288
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213661336957183992, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: patrolPath
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3213661336957183992, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: dwellTime
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3213661336957183992, guid: 5b6f488b082580247b1b7a0e9dbf9112, type: 3}

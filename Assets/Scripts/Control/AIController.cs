@@ -20,12 +20,13 @@ namespace RPG.Control
         float timeSinceLastSawPlayer = Mathf.Infinity;
         float timeSinceLastAttacked = Mathf.Infinity;
         float dwellingAtWaypoint = 0f;
-        float paranoia;
-        
+        float paranoia=-1f;
+
         GameObject player;
         Fighter fighter;
         Mover mover;
         Vector3 guardPosition;
+        RNG generator;
 
         const float waypointTollerance = 0.5f;
 
@@ -37,22 +38,25 @@ namespace RPG.Control
             fighter = GetComponent<Fighter>();
             mover = GetComponent<Mover>();
             guardPosition = transform.position;
-            paranoia = Random.Range(1f, 10f);
         }
 
-        private void Start() { ResumeRoutine(); }
+        private void Start()
+        {
+            ResumeRoutine();
+        }
 
         private void Update()
         {
             if (GetComponent<Health>().GetIsDead()) { return; }
             timeSinceLastSawPlayer += Time.deltaTime;
-            
+
             if (DistanceToTarget() < chaseRadius)
             {
                 AttackBehavior();
             }
             else if (timeSinceLastSawPlayer < paranoia)
             {
+                if (paranoia == -1) { SetParanoia(); }
                 SuspicionBehavior();
             }
             else if (!HasDwealtEnough() && AtWaypoint())
@@ -108,6 +112,12 @@ namespace RPG.Control
             mover.StartMoving(nextposition);
         }
 
+        private void SetParanoia()
+        {
+            generator = GameObject.Find("RandomeNumberGenerator").GetComponent<RNG>();
+            paranoia = generator.GenerateNumber(10);
+        }
+
         private float DistanceToTarget()
         {
             return Vector3.Distance(player.transform.position, transform.position);
@@ -127,13 +137,13 @@ namespace RPG.Control
         {
             return dwellingAtWaypoint >= dwellTime;
         }
-        
+
         private Vector3 GetCurrentWaypoint()
         {
             return patrolPath.GetWaypoint(currentWaypointIndex);
         }
-        
-        
+
+
     // Game Engine Visualizations
         private void OnDrawGizmos()
         {

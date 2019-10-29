@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   spellName: Fireball
-  casterClass: []
+  casterClasses: 
+  school: 0
   spellLevel: 1
   castingSpeed: 2
   timeToCast: 3
@@ -25,7 +26,6 @@ MonoBehaviour:
   cantMiss: 1
   isInstant: 1
   durration: 0
-  minDamagePerLevel: 1
   maxDamagePerLevel: 6
   effectPrefab: {fileID: 907725380061903264, guid: 65ab07484d99c6e40907c281f0c68492,
     type: 3}

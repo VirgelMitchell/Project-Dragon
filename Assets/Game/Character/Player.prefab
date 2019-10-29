@@ -120,12 +120,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4508130347158373242, guid: c46bf355de73c7b42842986ec621931a,
         type: 3}
-      propertyPath: startingLevel
+      propertyPath: characterClass
+      value: 
+      objectReference: {fileID: 11400000, guid: 89d6b49c5e5e3794ea95efeb019e517f,
+        type: 2}
+    - target: {fileID: 4508130347158373242, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: pcClassStartLevel
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4508130347158373242, guid: c46bf355de73c7b42842986ec621931a,
         type: 3}
-      propertyPath: characterClass
+      propertyPath: playerClass
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4380707127442314328, guid: c46bf355de73c7b42842986ec621931a,

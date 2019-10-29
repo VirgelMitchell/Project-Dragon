@@ -10,7 +10,7 @@ namespace RPG.Combat
     {
         [Header("General Info")]
         [SerializeField] string spellName = "";
-        [SerializeField] CasterClass[] casterClass;
+        [SerializeField] CasterClass[] casterClasses;
         [SerializeField] School school;
         [Range(0f, 10f)][SerializeField] int spellLevel = 0;
 
@@ -25,16 +25,15 @@ namespace RPG.Combat
         [SerializeField] bool cantMiss = false;
         [SerializeField] bool isInstant = true;
         [SerializeField] float durration = 0f;
-        [SerializeField] int minDamagePerLevel = 0;
         [SerializeField] int maxDamagePerLevel = 0;
 
         [Header("Prefabs")]
         [SerializeField] GameObject effectPrefab = null;
         [SerializeField] AnimatorOverrideController animationController = null;
 
-        Fighter caster = null;
         CastSpell castSpell;
         Transform tempObject;
+        RNG generator;
 
         const float longRange = 121.92f;
         const float lRBonus = 12.192f;
@@ -45,17 +44,17 @@ namespace RPG.Combat
         const float touchRange = 1.25f;
         const float speed = 20f;
 
+        const string tempGameObjName = "Temperary Objects";
 
-        // Basic Methods
+
+    // Basic Methods
         private void Awake()
         {
-            castSpell = effectPrefab.GetComponent<CastSpell>();
-            TempObject tempObj = FindObjectOfType<TempObject>();
-            tempObject = tempObj.transform;
+            generator = GameObject.FindObjectOfType<RNG>();
         }
 
 
-        // Getter Methods
+    // Getter Methods
         public float GetRange(int level)
         {
             switch (range)
@@ -87,9 +86,7 @@ namespace RPG.Combat
         public float GetSpeed() { return GetWaitTime(); }
 
 
-        // Public Methods
-        public void SetCaster(Fighter fighter) { caster = fighter; }
-
+    // Public Methods
         public void EquipSpell(Transform[] hands, Animator animator)
         {
             if (!effectPrefab || !animationController)
@@ -99,6 +96,7 @@ namespace RPG.Combat
             }
             GameObject spell = Instantiate(new GameObject(spellName), hands[0]);
             spell.transform.parent = hands[0].transform;
+            spell.name = spellName;
             animator.runtimeAnimatorController = animationController;
         }
 
@@ -108,25 +106,20 @@ namespace RPG.Combat
             if (spellLevel < level) { return; }
             Vector3 startLoc = hands[0].position;
             GameObject spellObject = Instantiate(effectPrefab, startLoc, Quaternion.identity);
-            spellObject.transform.parent = tempObject;
+            spellObject.transform.parent = GameObject.Find(tempGameObjName).transform;
             CastSpell spellInstance = spellObject.GetComponent<CastSpell>();
-            spellInstance.SetTarget(target.GetComponent<Health>(), cantMiss);
-            spellInstance.SetArea(areaOfEffect);
-            spellInstance.SetRange(GetRange(level));
-            spellInstance.SetSpeed(speed);
-            spellInstance.SetDamage(CalculateDamage(level));
-            spellInstance.SetType(attackType, numberOfTargets);
-            spellInstance.SetInstigater(instigater);
+            spellInstance.InitializeTargeting(target.GetComponent<Health>(), numberOfTargets, cantMiss, attackType, areaOfEffect);
+            spellInstance.InitializeSpell(CalculateDamage(level), GetRange(level), speed, instigater);
             // TODO decrease mana/magical energy count in inventory
         }
 
-        public void DestoySpell(Transform[] hands, string currentSpell)
+        public void DestoySpell(Transform[] hands, Spell spell)
         {
             Transform oldSpell = hands[0].Find(spellName);
             if (oldSpell == null) { oldSpell = hands[1].Find(spellName); }
             if (oldSpell == null)
             {
-                Debug.LogWarning("No Spell Found");
+                Debug.LogWarning(spellName + "Not Found");
                 return;
             }
             oldSpell.name = "OldSpell";
@@ -134,13 +127,13 @@ namespace RPG.Combat
         }
 
 
-        // Private Methods
-       private int CalculateDamage(int level)
+    // Private Methods
+        private int CalculateDamage(int level)
         {
             int damage = 0;
             for (int count = 0; count < level; count++)
             {
-                damage += (int)Random.Range(minDamagePerLevel, maxDamagePerLevel + 1f);
+                damage += generator.GenerateNumber(maxDamagePerLevel);
             }
             return damage;
         }

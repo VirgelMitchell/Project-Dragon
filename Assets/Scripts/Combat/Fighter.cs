@@ -8,11 +8,10 @@ namespace RPG.Combat
     public class Fighter : MonoBehaviour, IAction, ISavable
     {
         // Variables
-        [SerializeField] int characterLevel = 0;
         [SerializeField] int strBonus = 0;
         [Tooltip("0 = Right hand; 1 = Left hand")]
         [SerializeField] Transform[] hands = new Transform[2];
-        [SerializeField] string defaultWeaponName = "Unarmed Attack";
+        [SerializeField] string defaultWeaponName = "Weapons/Unarmed Attack";
         [SerializeField] string defaultSpellName = "";
 
         float timeSinceLastAttack = Mathf.Infinity;
@@ -106,12 +105,12 @@ namespace RPG.Combat
         {
             if (currentWeapon)
             {
-                currentWeapon.DestoyWeapon(hands, currentWeapon.ToString());
+                currentWeapon.DestoyWeapon(hands);
             }
             currentWeapon = null;
             if (currentSpell)
             {
-                currentSpell.DestoySpell(hands, currentSpell.ToString());
+                currentSpell.DestoySpell(hands, currentSpell);
             }
             currentSpell = null;
         }
@@ -129,7 +128,7 @@ namespace RPG.Combat
             float weaponSpeed;
             if (currentWeapon) { weaponSpeed = currentWeapon.GetSpeed(); }
             else { weaponSpeed = currentSpell.GetSpeed(); }
-            int numOfAttacks = baseStats.GetStat(Stat.numberOfAttacks);
+            int numOfAttacks = baseStats.GetAttacksPerRound();
             float timeBetweenAttacks = meleeRound / Mathf.Min(numOfAttacks, weaponSpeed);
             if (timeSinceLastAttack < timeBetweenAttacks) { return; }
 
@@ -143,8 +142,14 @@ namespace RPG.Combat
         {
             float dist2Tgt = Vector3.Distance(transform.position, opponent.position);
             float attackRange = 0f;
-            if (currentWeapon) { attackRange = currentWeapon.GetRange(); }
-            else if (currentSpell) { attackRange = currentSpell.GetRange(characterLevel); }
+            if (currentWeapon)
+            {
+                attackRange = currentWeapon.GetRange();
+            }
+            else if (currentSpell)
+            {
+                attackRange = currentSpell.GetRange(baseStats.GetLevel());
+            }
             return dist2Tgt < attackRange;
         }
 
@@ -186,7 +191,7 @@ namespace RPG.Combat
             if (opponent == null) { return; }
             if (currentSpell)
             {
-                currentSpell.CastSpell(me, opponent, hands, characterLevel);
+                currentSpell.CastSpell(me, opponent, hands, baseStats.GetLevel());
             }
             else
             {
@@ -207,3 +212,4 @@ namespace RPG.Combat
         }
     }
 }
+

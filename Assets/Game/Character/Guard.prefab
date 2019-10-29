@@ -199,6 +199,16 @@ PrefabInstance:
       propertyPath: characterClass
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4508130347158373242, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: challengeRating
+      value: 1/2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508130347158373242, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: playerClass
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4380707127442314328, guid: c46bf355de73c7b42842986ec621931a,
         type: 3}
       propertyPath: weapon

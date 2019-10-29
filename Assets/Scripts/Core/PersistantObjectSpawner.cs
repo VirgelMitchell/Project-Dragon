@@ -6,8 +6,7 @@ namespace RPG.Core
     {
         static bool hasSpawned = false;
 
-        [Tooltip("Prefab")] [SerializeField] GameObject faderPrefab = null;
-        [Tooltip("Prefab")] [SerializeField] GameObject saveSysPrefab = null;
+        [Tooltip("Prefab")] [SerializeField] GameObject PersistantObjPrefab = null;
 
         private void Awake() {
             if (hasSpawned) { return; }
@@ -20,10 +19,8 @@ namespace RPG.Core
 
         private void SpawnObjects()
         {
-            GameObject fader = Instantiate(faderPrefab);
-            DontDestroyOnLoad(fader);
-            GameObject saveSystem = Instantiate(saveSysPrefab);
-            DontDestroyOnLoad(saveSystem);
+            GameObject persistantObjects = Instantiate(PersistantObjPrefab);
+            DontDestroyOnLoad(persistantObjects);
         }
     }
 }

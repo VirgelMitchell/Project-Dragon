@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2608054900656681825}
   - component: {fileID: 7359230538097118449}
   m_Layer: 0
-  m_Name: TempObjetcts
+  m_Name: Temperary Objetcts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

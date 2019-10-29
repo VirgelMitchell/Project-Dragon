@@ -1,4 +1,5 @@
-﻿using RPG.Control;
+﻿using RPG.Combat;
+using RPG.Control;
 using RPG.Core;
 using UnityEngine;
 
@@ -32,7 +33,7 @@ namespace RPG.Stats
 
         private void Start()
         {
-            baseHP = GetComponent<BaseStats>().GetStat(Stat.health);
+            baseHP = GetComponent<BaseStats>().GetHealth();
             if (currentHP == 0 && !isDead) { currentHP = baseHP; }
         }
 
@@ -61,7 +62,7 @@ namespace RPG.Stats
 
         public float GetHP()
         {
-            return (float)currentHP / GetComponent<BaseStats>().GetStat(Stat.health);
+            return (float)currentHP / GetComponent<BaseStats>().GetHealth();
         }
 
 
@@ -75,8 +76,8 @@ namespace RPG.Stats
 
             if (currentHP <= 0)
             {
-                AwardExperience();
                 Die();
+                AwardExperience();
             }
         }
 
@@ -84,6 +85,7 @@ namespace RPG.Stats
     // Private Methods
         private void UpdateAttacker(GameObject instigator)
         {
+            if (attacker == null) { attacker = instigator; }
             if (attacker == instigator)
             {
                 if (playerController)
@@ -99,12 +101,13 @@ namespace RPG.Stats
                     Debug.LogWarning("WARNING! WARNING! UNCONTOLLED ENTITY DETECTED");
                 }
             }
-            if (attacker == null) { attacker = instigator; }
         }
 
         private void AwardExperience()
         {
-            int xpReward = GetComponent<BaseStats>().GetStat(Stat.experienceValue);
+            if (!attacker.GetComponent<ExperienceTracker>()) { return; }
+            int instigatorLevel = attacker.GetComponent<BaseStats>().GetLevel();
+            int xpReward = GetComponent<BaseStats>().GetXPReward(instigatorLevel);
             attacker.GetComponent<ExperienceTracker>().RewardXP(xpReward);
         }
 

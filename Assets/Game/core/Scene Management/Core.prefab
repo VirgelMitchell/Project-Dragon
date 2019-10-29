@@ -48,9 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891bdc3a98d5a724dbdc270811bbee5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faderPrefab: {fileID: 3227714288186473803, guid: 3a57c6edfcb6d2a43859c207dacd4562,
-    type: 3}
-  saveSysPrefab: {fileID: 4388339316110341577, guid: 9ea667593b6672e4caf018a220e86db4,
+  PersistantObjPrefab: {fileID: 5829054809010473749, guid: 99cd66d4fdfdcca44b9059c5b5900c10,
     type: 3}
 --- !u!1001 &1235618943050403429
 PrefabInstance:

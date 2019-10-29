@@ -24,11 +24,6 @@ namespace RPG.Magic
 
 
     // Basic Methods
-        private void Awake()
-        {
-            tempObject = FindObjectOfType<TempObject>().transform;
-        }
-
         void Start()
         {
             if (!castingEffect)
@@ -52,33 +47,27 @@ namespace RPG.Magic
                 else { DealAreaDamage(); }
             }
         }
-        
-        
-    // Setter Methods
-        public void SetArea(float area) { areaOfEffct = area; }
-        public void SetDamage(int dmg) { damage = dmg; }
-        public void SetRange(float rng) { range = rng;; }
-        public void SetSpeed(float spd) { speed = spd; }
 
-        public void SetTarget(Health health, bool homing)
+
+    // Setter Methods
+        public void InitializeTargeting(Health health, int targets, bool homing, AttackType attack, float area)
         {
             target = health;
             isHoming = homing;
-        }
-
-        public void SetType(AttackType attack, int targets)
-        {
             attackType = attack;
+            areaOfEffct = area;
             numberOfTarges = targets;
         }
 
-        public void SetInstigater(GameObject caster)
+        public void InitializeSpell(int dmg, float rng, float spd, GameObject caster)
         {
+            damage = dmg;
+            range = rng;
+            speed = spd;
             instigater = caster;
         }
-        
 
-    
+
     // Private Methods
         private Vector3 GetPosition()
         {

@@ -7,9 +7,9 @@ namespace RPG.Cinematics
 
     public class CinematicTrigger : MonoBehaviour, ISavable
     {
-        bool hasBeenTriggered = false;
+        bool hasBeenTriggered = true;
 
-        void OnTriggerEnter(Collider other) 
+        void OnTriggerEnter(Collider other)
         {
             if(!hasBeenTriggered && other.gameObject.tag == "Player")
             {

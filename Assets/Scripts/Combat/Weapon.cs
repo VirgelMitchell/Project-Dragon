@@ -1,3 +1,4 @@
+using RPG.Core;
 using RPG.Stats;
 using UnityEngine;
 
@@ -20,9 +21,19 @@ namespace RPG.Combat
         [Tooltip("number of attacks per melee round")]
         [SerializeField] int weaponSpeed = 0;
 
-        
+        RNG generator;
+
+
     // Constants
         const string weapName = "Weapon";
+        const string tempGameObjName = "Temperary Objects";
+
+
+    // Basic Methods
+        private void Start()
+        {
+
+        }
 
 
     // Getter Methods
@@ -50,7 +61,7 @@ namespace RPG.Combat
         {
             Vector3 startLoc = GetWeapTransform(hands).position;
             Projectile projectileInst = Instantiate(projectile, startLoc, Quaternion.identity);
-            projectileInst.transform.parent = GameObject.Find("TempObjetcts").transform;
+            projectileInst.transform.parent = GameObject.Find(tempGameObjName).transform;
             projectileInst.SetTarget(target.GetComponent<Health>());
             projectileInst.SetRange(attackRange);
             projectileInst.SetDamage(CalculateDamage(strBonus));
@@ -59,7 +70,7 @@ namespace RPG.Combat
             // TODO decrease projectile count in inventory
         }
 
-        public void DestoyWeapon(Transform[] hands, string currentWeapon)
+        public void DestoyWeapon(Transform[] hands)
         {
             Transform oldWeap = hands[0].Find(weapName);
             if (oldWeap == null) { oldWeap = hands[1].Find(weapName); }
@@ -84,7 +95,8 @@ namespace RPG.Combat
 
         private int CalculateDamage(int strBonus)
         {
-            int damage = (int)Random.Range(1f, maxDamage + 1f);
+            generator = GameObject.Find("RandomeNumberGenerator").GetComponent<RNG>();
+            int damage = generator.GenerateNumber(maxDamage);
             int bonusDamage = strBonus;
             return damage + bonusDamage;
         }

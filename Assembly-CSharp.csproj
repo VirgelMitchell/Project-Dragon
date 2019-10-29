@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\Core\IAction.cs" />
      <Compile Include="Assets\Scripts\Core\ISavable.cs" />
      <Compile Include="Assets\Scripts\Core\PersistantObjectSpawner.cs" />
+     <Compile Include="Assets\Scripts\Core\RNG.cs" />
      <Compile Include="Assets\Scripts\Core\TempObject.cs" />
      <Compile Include="Assets\Scripts\Magic\CastSpell.cs" />
      <Compile Include="Assets\Scripts\Movement\Mover.cs" />
@@ -82,11 +83,13 @@
      <Compile Include="Assets\Scripts\SceneManagement\GateGuardianControl.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\Portal.cs" />
      <Compile Include="Assets\Scripts\SceneManagement\SavingWrapper.cs" />
+     <Compile Include="Assets\Scripts\Stats\AttackProgression.cs" />
      <Compile Include="Assets\Scripts\Stats\BaseStats.cs" />
+     <Compile Include="Assets\Scripts\Stats\CharacterClass.cs" />
      <Compile Include="Assets\Scripts\Stats\ExperienceTracker.cs" />
      <Compile Include="Assets\Scripts\Stats\Health.cs" />
      <Compile Include="Assets\Scripts\Stats\PlayerHealthDisplay.cs" />
-     <Compile Include="Assets\Scripts\Stats\Progression.cs" />
+     <Compile Include="Assets\Scripts\Stats\XPRewardProgression.cs" />
      <None Include="Assets\Asset Packs\Animations\README - Usage Rights for these assets 1.txt" />
      <None Include="Assets\Asset Packs\Synty - Polygon Student Sample\README - Usage Rights for these assets.txt" />
      <None Include="Assets\Asset Packs\SkySerie Freebie\Hdri setup.txt" />

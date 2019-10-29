@@ -169,9 +169,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 601392deeee202b4b8058e583aa37c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progression: {fileID: 11400000, guid: 18d0816b08e95274c9dd8412d9e1e448, type: 2}
-  characterClass: 0
-  startingLevel: 0
+  playerClass: 0
+  xpRewardProgression: {fileID: 11400000, guid: c422fec04ebb7234799c89f12bfb5974,
+    type: 2}
+  pcClassStartLevel: 0
+  challengeRating: 
 --- !u!114 &118765547127298035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 470621ca10cb01f48ba5486f7bdac68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumHP: 1
+  baseHP: 0
+  currentHP: 0
+  rememberLastAttackerTime: 5
 --- !u!114 &4380707127442314328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,11 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75112c4f95d07294a850c4ae3edb7065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterLevel: 0
-  numOfAttacks: 1
   strBonus: 0
   hands:
   - {fileID: 0}
   - {fileID: 0}
-  defaultWeaponName: Unarmed Attack
+  defaultWeaponName: Weapons/Unarmed Attack
   defaultSpellName: 

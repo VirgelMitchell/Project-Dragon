@@ -2,87 +2,63 @@ namespace RPG.Core
 {
     public enum AttackType
     {
-        area,
-        ranged,
-        touch
+        area, ranged, touch
     }
 
     public enum Attributes
     {
-        strength,
-        constitution,
-        dexterity,
-        intelligence,
-        wisdom,
-        charisma
+        strength, constitution, dexterity, intelligence, wisdom, charisma
     }
 
-    public enum CharacterClass
+    public enum PlayerClass
     {
-        barbarian,
-        bard,
-        cleric,
-        druid,
-        fighter,
-        monk,
-        palidine,
-        ranger,
-        rogue,
-        sorceror,
-        wizard
+        barbarian, bard, cleric, druid, fighter, monk, palidine, ranger, rogue, sorceror, wizard
     }
 
     public enum CasterClass
     {
-        cleric,
-        druid,
-        palidine,
-        ranger,
-        sorceror,
-        wizard
+        cleric, druid, palidine, ranger, sorceror, wizard
     }
 
     public enum CastingSpeed
     {
-        full,
-        instant,
-        standard,
-        other
+        instant, standard, full, other
+    }
+
+    public enum ProgressionRate
+    {
+        good, fair, poor
     }
 
     public enum Hand
     {
-        left,
-        right
+        left, right
     }
 
     public enum Range
     {
-        close,
-        far,
-        given,
-        medium,
-        personal,
-        touch
+        close, far, given, medium, personal, touch
     }
 
     public enum School
     {
-        abjuration,
-        conjuration,
-        divination,
-        enchantment,
-        evokation,
-        illusion,
-        necromancy,
-        transmutation,
-        universal
+        abjuration, conjuration, divination, enchantment, evokation, illusion, necromancy, transmutation, universal
+    }
+
+    public enum SpellLevel
+    {
+        cantrips, first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth
     }
 
     public enum Stat
     {
-        experienceValue,
-        health,
-        numberOfAttacks
+        attacks,
+        maxHitPoints,
+        skillPoints,
+        spellsKnown,
+        spellsPerDay
     }
+
+    public enum XP
+    {value, requirement}
 }

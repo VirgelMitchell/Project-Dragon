@@ -17,7 +17,7 @@ MonoBehaviour:
     type: 3}
   projectile: {fileID: 0}
   is2Handed: 0
-  attackRange: 1.25
+  attackRange: 1
   maxDamage: 1
   projectileSpeed: 0
   weaponSpeed: 2
