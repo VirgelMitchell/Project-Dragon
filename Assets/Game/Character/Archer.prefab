@@ -111,7 +111,7 @@ PrefabInstance:
     - target: {fileID: 6307215787345520108, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: defaultWeaponName
-      value: Enemy Short Bow
+      value: Weapon/Enemy Short Bow
       objectReference: {fileID: 0}
     - target: {fileID: 1719256483601437966, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}

@@ -41,8 +41,9 @@ namespace RPG.Combat
             {
                 Weapon defaultWeapon = Resources.Load<Weapon>(defaultWeaponName);
                 Spell defaultSpell = Resources.Load<Spell>(defaultSpellName);
-                EquipWeapon(defaultWeapon);
-                EquipSpell(defaultSpell);
+
+                if (defaultWeaponName != "") { EquipWeapon(defaultWeapon); }
+                else if (defaultSpellName != "") { EquipSpell(defaultSpell); }
             }
         }
 

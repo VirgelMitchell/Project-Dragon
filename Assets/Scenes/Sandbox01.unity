@@ -6849,6 +6849,11 @@ PrefabInstance:
       propertyPath: currentWaypointIndex
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2181376655299308692, guid: 4470f2da088cb194f9756e1855d9e42e,
+        type: 3}
+      propertyPath: defaultWeaponName
+      value: Weapons/Enemy Short Bow
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4470f2da088cb194f9756e1855d9e42e, type: 3}
 --- !u!1001 &5919158056457562079

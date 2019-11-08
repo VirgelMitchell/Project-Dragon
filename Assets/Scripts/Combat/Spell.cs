@@ -34,6 +34,7 @@ namespace RPG.Combat
         CastSpell castSpell;
         Transform tempObject;
         RNG generator;
+        string generatorObjName = "RandomeNumberGenerator";
 
         const float longRange = 121.92f;
         const float lRBonus = 12.192f;
@@ -48,10 +49,8 @@ namespace RPG.Combat
 
 
     // Basic Methods
-        private void Awake()
-        {
-            generator = GameObject.FindObjectOfType<RNG>();
-        }
+        private void Start()
+        {}
 
 
     // Getter Methods
@@ -130,6 +129,8 @@ namespace RPG.Combat
     // Private Methods
         private int CalculateDamage(int level)
         {
+            generator = GameObject.Find(generatorObjName).GetComponent<RNG>();
+
             int damage = 0;
             for (int count = 0; count < level; count++)
             {
