@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace RPG.Stats
 {
-    public class PlayerHealthDisplay : MonoBehaviour 
+    public class PlayerHealthDisplay : MonoBehaviour
     {
         Health health;
 
@@ -15,7 +15,7 @@ namespace RPG.Stats
         private void Update()
         {
             GetComponent<Text>().text =
-                string.Format("Player: {0:p0}", health.GetHP());
+                string.Format("Player: {0:p0}", health.GetHealth());
         }
     }
 }

@@ -5,16 +5,6 @@ namespace RPG.Core
         area, ranged, touch
     }
 
-    public enum Attributes
-    {
-        strength, constitution, dexterity, intelligence, wisdom, charisma
-    }
-
-    public enum PlayerClass
-    {
-        barbarian, bard, cleric, druid, fighter, monk, palidine, ranger, rogue, sorceror, wizard
-    }
-
     public enum CasterClass
     {
         cleric, druid, palidine, ranger, sorceror, wizard
@@ -25,9 +15,9 @@ namespace RPG.Core
         instant, standard, full, other
     }
 
-    public enum ProgressionRate
+    public enum CharacterStat
     {
-        good, fair, poor
+        attacks, baseSave
     }
 
     public enum Hand
@@ -35,9 +25,24 @@ namespace RPG.Core
         left, right
     }
 
+    public enum PlayerClass
+    {
+        barbarian, bard, cleric, druid, fighter, monk, palidine, ranger, rogue, sorceror, wizard
+    }
+
+    public enum ProgressionRate
+    {
+        fair, good, poor
+    }
+
     public enum Range
     {
         close, far, given, medium, personal, touch
+    }
+
+    public enum SaveType
+    {
+        fortitude, reflex, will
     }
 
     public enum School
@@ -49,16 +54,4 @@ namespace RPG.Core
     {
         cantrips, first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth
     }
-
-    public enum Stat
-    {
-        attacks,
-        maxHitPoints,
-        skillPoints,
-        spellsKnown,
-        spellsPerDay
-    }
-
-    public enum XP
-    {value, requirement}
 }

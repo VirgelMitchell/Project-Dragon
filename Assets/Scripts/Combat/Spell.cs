@@ -33,24 +33,6 @@ namespace RPG.Combat
 
         CastSpell castSpell;
         Transform tempObject;
-        RNG generator;
-        string generatorObjName = "RandomeNumberGenerator";
-
-        const float longRange = 121.92f;
-        const float lRBonus = 12.192f;
-        const float closeRange = 7.62f;
-        const float cRBonus = 1.524f;
-        const float mediumRange = 30.48f;
-        const float mRBonus = 3.048f;
-        const float touchRange = 1.25f;
-        const float speed = 20f;
-
-        const string tempGameObjName = "Temperary Objects";
-
-
-    // Basic Methods
-        private void Start()
-        {}
 
 
     // Getter Methods
@@ -59,19 +41,19 @@ namespace RPG.Combat
             switch (range)
             {
                 case Range.close:
-                    return closeRange + (cRBonus * (level / 2));
+                    return Constant.closeRange + (Constant.cRBonus * (level / 2));
 
                 case Range.far:
-                    return longRange + (lRBonus * level);
+                    return Constant.longRange + (Constant.lRBonus * level);
 
                 case Range.given:
                     return givenRange;
 
                 case Range.medium:
-                    return mediumRange + (mRBonus * level);
+                    return Constant.mediumRange + (Constant.mRBonus * level);
 
                 case Range.touch:
-                    return touchRange;
+                    return Constant.touchRange;
 
                 case Range.personal:
                     return 0f;
@@ -105,10 +87,10 @@ namespace RPG.Combat
             if (spellLevel < level) { return; }
             Vector3 startLoc = hands[0].position;
             GameObject spellObject = Instantiate(effectPrefab, startLoc, Quaternion.identity);
-            spellObject.transform.parent = GameObject.Find(tempGameObjName).transform;
+            spellObject.transform.parent = GameObject.Find(Constant.tempGameObjName).transform;
             CastSpell spellInstance = spellObject.GetComponent<CastSpell>();
             spellInstance.InitializeTargeting(target.GetComponent<Health>(), numberOfTargets, cantMiss, attackType, areaOfEffect);
-            spellInstance.InitializeSpell(CalculateDamage(level), GetRange(level), speed, instigater);
+            spellInstance.InitializeSpell(CalculateDamage(level), GetRange(level), Constant.speed, instigater);
             // TODO decrease mana/magical energy count in inventory
         }
 
@@ -129,7 +111,7 @@ namespace RPG.Combat
     // Private Methods
         private int CalculateDamage(int level)
         {
-            generator = GameObject.Find(generatorObjName).GetComponent<RNG>();
+            RNG generator = GameObject.Find(Constant.generatorObjName).GetComponent<RNG>();
 
             int damage = 0;
             for (int count = 0; count < level; count++)

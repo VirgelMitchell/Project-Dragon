@@ -5,13 +5,14 @@ namespace RPG.Combat
 {
     public class Projectile : MonoBehaviour
     {
-        float distanceTraveled = 0f;
         int damage = 0;
+
+        float distanceTraveled = 0f;
         float range = 0f;
         float speed = 0f;
 
-        Health target = null;
         GameObject instigater;
+        Health target = null;
 
         // Basic Methods
         void Start()

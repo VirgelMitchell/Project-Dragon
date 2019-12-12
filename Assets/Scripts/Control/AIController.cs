@@ -26,7 +26,6 @@ namespace RPG.Control
         Fighter fighter;
         Mover mover;
         Vector3 guardPosition;
-        RNG generator;
 
         const float waypointTollerance = 0.5f;
 
@@ -114,8 +113,7 @@ namespace RPG.Control
 
         private void SetParanoia()
         {
-            generator = GameObject.Find("RandomeNumberGenerator").GetComponent<RNG>();
-            paranoia = generator.GenerateNumber(10);
+            paranoia = GameObject.Find(Constant.generatorObjName).GetComponent<RNG>().GenerateNumber(10);
         }
 
         private float DistanceToTarget()

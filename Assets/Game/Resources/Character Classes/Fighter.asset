@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Fighter
   m_EditorClassIdentifier: 
   characterClass: 4
-  attackProgressionTable: {fileID: 11400000, guid: 6154d78eed49a3443996812e798496d3,
-    type: 2}
-  attackProgressionRate: 0
+  attackProgressionRate: 1
+  fortitudeSaveProgressionRate: 1
+  reflexSaveProgressionRate: 0
+  willSaveProgressionRate: 2
+  statProgression: {fileID: 11400000, guid: d18eec4222f368e44a994029815ca161, type: 2}
   hitDieSize: 10
   skillPointsPerLevel: 4

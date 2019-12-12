@@ -8,9 +8,10 @@ namespace RPG.Control
     public class PlayerController : MonoBehaviour
     {
     // Variables
+        private float timeSinceLastAttacked;
+
         Mover mover;
         Fighter fighter;
-        private float timeSinceLastAttacked;
 
 
         // Basic Methods
@@ -19,10 +20,11 @@ namespace RPG.Control
             mover = GetComponent<Mover>();
             fighter = GetComponent<Fighter>();
         }
-        
+
         void Update()
         {
-            UpdateTimers();
+            timeSinceLastAttacked += Time.deltaTime;
+
             if (GetComponent<Health>().GetIsDead())     { return; }
             if (InteractWithCombat())                   { return; }
             if (InteractWithMovement())                 { return; }
@@ -35,11 +37,6 @@ namespace RPG.Control
 
 
     // Private Methods
-        private void UpdateTimers()
-        {
-            timeSinceLastAttacked += Time.deltaTime;
-        }
-
         private bool InteractWithCombat()
         {
             RaycastHit[] hits = Physics.RaycastAll(GetRay());

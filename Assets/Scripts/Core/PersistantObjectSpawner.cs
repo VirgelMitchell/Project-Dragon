@@ -12,15 +12,10 @@ namespace RPG.Core
             if (hasSpawned) { return; }
             else
             {
-                SpawnObjects();
+                GameObject persistantObjects = Instantiate(PersistantObjPrefab);
+                DontDestroyOnLoad(persistantObjects);
                 hasSpawned = true;
             }
-        }
-
-        private void SpawnObjects()
-        {
-            GameObject persistantObjects = Instantiate(PersistantObjPrefab);
-            DontDestroyOnLoad(persistantObjects);
         }
     }
 }

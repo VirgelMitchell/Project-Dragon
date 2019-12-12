@@ -21,20 +21,6 @@ namespace RPG.Combat
         [Tooltip("number of attacks per melee round")]
         [SerializeField] int weaponSpeed = 0;
 
-        RNG generator;
-
-
-    // Constants
-        const string weapName = "Weapon";
-        const string tempGameObjName = "Temperary Objects";
-
-
-    // Basic Methods
-        private void Start()
-        {
-
-        }
-
 
     // Getter Methods
         public int GetDamage(int strBonus)  { return CalculateDamage(strBonus); }
@@ -53,7 +39,7 @@ namespace RPG.Combat
             Transform weapLocation = GetWeapTransform(hands);
             GameObject weapon = Instantiate(equippedPrefab, weapLocation);
             weapon.transform.parent = weapLocation;
-            weapon.name = weapName;
+            weapon.name = Constant.weapName;
             animator.runtimeAnimatorController = weapAnimControl;
         }
 
@@ -61,7 +47,7 @@ namespace RPG.Combat
         {
             Vector3 startLoc = GetWeapTransform(hands).position;
             Projectile projectileInst = Instantiate(projectile, startLoc, Quaternion.identity);
-            projectileInst.transform.parent = GameObject.Find(tempGameObjName).transform;
+            projectileInst.transform.parent = GameObject.Find(Constant.tempGameObjName).transform;
             projectileInst.SetTarget(target.GetComponent<Health>());
             projectileInst.SetRange(attackRange);
             projectileInst.SetDamage(CalculateDamage(strBonus));
@@ -72,8 +58,8 @@ namespace RPG.Combat
 
         public void DestoyWeapon(Transform[] hands)
         {
-            Transform oldWeap = hands[0].Find(weapName);
-            if (oldWeap == null) { oldWeap = hands[1].Find(weapName); }
+            Transform oldWeap = hands[0].Find(Constant.weapName);
+            if (oldWeap == null) { oldWeap = hands[1].Find(Constant.weapName); }
             if (oldWeap == null)
             {
                 Debug.LogWarning("No Weapon Found");
@@ -95,7 +81,8 @@ namespace RPG.Combat
 
         private int CalculateDamage(int strBonus)
         {
-            generator = GameObject.Find("RandomeNumberGenerator").GetComponent<RNG>();
+            RNG generator = GameObject.Find(Constant.generatorObjName).GetComponent<RNG>();
+
             int damage = generator.GenerateNumber(maxDamage);
             int bonusDamage = strBonus;
             return damage + bonusDamage;

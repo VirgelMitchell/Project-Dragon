@@ -7,15 +7,14 @@ namespace RPG.SceneManagement
 {
     public class SavingWrapper : MonoBehaviour
     {
-        const string defaultFile = "Save";
-
         float waitTime = 1f;
         float fadeSpeed = 1f;
+
         SavingSystem sSystem;
 
         private void Awake()
         {
-            sSystem = GetComponent<SavingSystem>(); 
+            sSystem = GetComponent<SavingSystem>();
         }
 
         private IEnumerator Start()
@@ -24,12 +23,12 @@ namespace RPG.SceneManagement
 
             fader.StartFadedOut();
 
-            yield return StartCoroutine(sSystem.LoadLastScene(defaultFile));
+            yield return StartCoroutine(sSystem.LoadLastScene(Constant.defaultSaveFile));
             yield return new WaitForSeconds(waitTime);
 
             yield return fader.FadeIn(fadeSpeed);
         }
-        
+
         private void Update()
          {
             if (Input.GetKeyDown(KeyCode.F1)) { Save(); }
@@ -38,12 +37,12 @@ namespace RPG.SceneManagement
 
         public void Save()
         {
-            sSystem.Save(defaultFile);
+            sSystem.Save(Constant.defaultSaveFile);
         }
 
         public void Load()
         {
-            sSystem.Load(defaultFile);
+            sSystem.Load(Constant.defaultSaveFile);
         }
     }
 }

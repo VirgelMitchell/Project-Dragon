@@ -7,34 +7,42 @@ namespace RPG.Stats
     [CreateAssetMenu(fileName = "CharacterClass", menuName = "Progression/New Character Class", order = 0)]
     public class CharacterClass : ScriptableObject
     {
+        // RPG.Core.Enumerators.PlayerClass
         [SerializeField] PlayerClass characterClass;
-        [SerializeField] AttackProgression attackProgressionTable;
-        [SerializeField] ProgressionRate attackProgressionRate;   // RPG.Core.Enumerators.ProgressionRate
+
+        // RPG.Core.Enumerators.ProgressionRate
+        [SerializeField] ProgressionRate attackProgressionRate;
+        [SerializeField] ProgressionRate fortitudeSaveProgressionRate;
+        [SerializeField] ProgressionRate reflexSaveProgressionRate;
+        [SerializeField] ProgressionRate willSaveProgressionRate;
+        [SerializeField] StatProgression statProgression; // reference to Stat Progression SO
+
         [SerializeField] int hitDieSize;
         [SerializeField] int skillPointsPerLevel;
 
         bool isCaster = false;
-
-        private void Start()
-        {
-            SetIsCaster();
-        }
 
         public PlayerClass GetClass() { return characterClass; }
         public int GetHitDieSize() { return hitDieSize; }
 
         public int GetAttacksPerRound(int level)
         {
-            return attackProgressionTable.GetAttacks(attackProgressionRate, level);
+            return statProgression.GetStat(CharacterStat.attacks, attackProgressionRate, level);
         }
 
-        private bool SetIsCaster()
+        public int GetFortitudeBaseSave(int level)
         {
-            foreach (CasterClass cClass in Enum.GetValues(typeof (CasterClass)))
-            {
-                if (cClass.ToString() == characterClass.ToString()) { return true; }
-            }
-            return false;
+            return statProgression.GetStat(CharacterStat.baseSave, fortitudeSaveProgressionRate, level);
+        }
+
+        public int GetReflexBaseSave(int level)
+        {
+            return statProgression.GetStat(CharacterStat.baseSave, reflexSaveProgressionRate, level);
+        }
+
+        public int GetWillBaseSave(int level)
+        {
+            return statProgression.GetStat(CharacterStat.baseSave, willSaveProgressionRate, level);
         }
     }
 }

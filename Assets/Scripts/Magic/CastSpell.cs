@@ -10,17 +10,20 @@ namespace RPG.Magic
         [SerializeField] ParticleSystem castingEffect = null;
         [SerializeField] ParticleSystem damageEffect = null;
 
-        float areaOfEffct = 0f;
-        AttackType attackType;
-        int damage = 0;
-        float distanceTraveled = 0;
-        GameObject instigater = null;
-        bool isHoming = false;
-        int numberOfTarges = 0;
-        float range = 0f;
-        float speed = 0f;
-        Health target = null;
-        Transform tempObject = null;
+        bool    isHoming = false;
+
+        int     damage = 0;
+        int     numberOfTarges = 0;
+
+        float   areaOfEffct = 0f;
+        float   distanceTraveled = 0;
+        float   range = 0f;
+        float   speed = 0f;
+
+        AttackType  attackType;
+        GameObject  instigater = null;
+        Health      target = null;
+        Transform   tempObject = null;
 
 
     // Basic Methods

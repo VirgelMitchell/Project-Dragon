@@ -7,7 +7,7 @@ namespace RPG.Combat
 {
     public class Fighter : MonoBehaviour, IAction, ISavable
     {
-        // Variables
+    // Variables
         [SerializeField] int strBonus = 0;
         [Tooltip("0 = Right hand; 1 = Left hand")]
         [SerializeField] Transform[] hands = new Transform[2];
@@ -16,18 +16,15 @@ namespace RPG.Combat
 
         float timeSinceLastAttack = Mathf.Infinity;
 
-        Animator animator = null;
-        BaseStats baseStats;
-        Weapon currentWeapon = null;
-        Spell currentSpell = null;
-        GameObject me;
-        Transform opponent = null;
-
-    // Constants
-        const float meleeRound = 6f;
+        Animator    animator = null;
+        BaseStats   baseStats;
+        GameObject  me;
+        Spell       currentSpell = null;
+        Transform   opponent = null;
+        Weapon      currentWeapon = null;
 
 
-        // Basic Methods
+    // Basic Methods
         private void Awake()
         {
             animator = GetComponent<Animator>();
@@ -130,7 +127,7 @@ namespace RPG.Combat
             if (currentWeapon) { weaponSpeed = currentWeapon.GetSpeed(); }
             else { weaponSpeed = currentSpell.GetSpeed(); }
             int numOfAttacks = baseStats.GetAttacksPerRound();
-            float timeBetweenAttacks = meleeRound / Mathf.Min(numOfAttacks, weaponSpeed);
+            float timeBetweenAttacks = Constant.meleeRound / Mathf.Min(numOfAttacks, weaponSpeed);
             if (timeSinceLastAttack < timeBetweenAttacks) { return; }
 
             animator.ResetTrigger("stopAttack");
@@ -149,7 +146,7 @@ namespace RPG.Combat
             }
             else if (currentSpell)
             {
-                attackRange = currentSpell.GetRange(baseStats.GetLevel());
+               attackRange = currentSpell.GetRange(baseStats.GetCasterLevel());
             }
             return dist2Tgt < attackRange;
         }
@@ -192,7 +189,7 @@ namespace RPG.Combat
             if (opponent == null) { return; }
             if (currentSpell)
             {
-                currentSpell.CastSpell(me, opponent, hands, baseStats.GetLevel());
+               currentSpell.CastSpell(me, opponent, hands, baseStats.GetCasterLevel());
             }
             else
             {

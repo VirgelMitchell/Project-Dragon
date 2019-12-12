@@ -33,13 +33,13 @@ namespace RPG.Stats
 
         private void Start()
         {
-            baseHP = GetComponent<BaseStats>().GetHealth();
+            baseHP = GetComponent<BaseStats>().GetHP();
             if (currentHP == 0 && !isDead) { currentHP = baseHP; }
         }
 
         private void Update()
         {
-            if(playerController)
+            if (playerController)
             {
                 if(playerController.GetTimeSinceLastAttacked() > rememberLastAttackerTime)
                 {
@@ -60,9 +60,9 @@ namespace RPG.Stats
     // Getter Methods
         public bool GetIsDead()         { return isDead; }
 
-        public float GetHP()
+        public float GetHealth()
         {
-            return (float)currentHP / GetComponent<BaseStats>().GetHealth();
+            return (float)currentHP / baseHP;
         }
 
 

@@ -12,28 +12,15 @@ namespace RPG.Stats
 
         public int GetReward(string challengeRating, int attackerLevel)
         {
-            Debug.Log("XPRewardProgression.GetReward() recieves" +
-                      "\n    Challenge Rating: " + challengeRating +
-                      "\n    Attacker Level: " + attackerLevel);
-
             BuildLookup();
 
-            if (!lookupTable.ContainsKey(challengeRating))
-            {
-                Debug.LogWarning("CR not Found");
-                return 0;
-            }
+            if (attackerLevel > 20) { attackerLevel = 20; }
 
+            if (!lookupTable.ContainsKey(challengeRating)) { return 0; }
             int[] rewardLevels = lookupTable[challengeRating];
 
-            if (attackerLevel > 20) { attackerLevel = 20; }
-            if (rewardLevels.Length < attackerLevel + 1)
-            {
-                Debug.LogWarning("Attacker Level not found!");
-                return 0;
-            }
+            if (rewardLevels.Length < attackerLevel + 1) { return 0; }
 
-            Debug.Log("XP Reward = " + rewardLevels[attackerLevel]);
             return rewardLevels[attackerLevel];
         }
 
