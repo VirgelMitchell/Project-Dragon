@@ -45,7 +45,7 @@ namespace RPG.Control
                 CombatTarget candidate = hit.transform.GetComponent<CombatTarget>();
 
                 if (candidate == null)                          {  continue;  }
-                if (!fighter.CanAttack(candidate.gameObject))   {  continue;  }
+                if (!fighter.isValidTarget(candidate.gameObject))   {  continue;  }
                 if (Input.GetMouseButton(0))
                 {
                      mover.characterSpeed = "jog";

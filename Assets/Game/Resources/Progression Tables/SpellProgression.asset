@@ -1,0 +1,1970 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57446f626c258d746a758cb97df756c4, type: 3}
+  m_Name: SpellProgression
+  m_EditorClassIdentifier: 
+  countTypes:
+  - spellCountType: 1
+    casterClasses:
+    - casterClass: 0
+      casterLevelProgressions:
+      - casterLevel: 0
+        spellLevel:
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 1
+        spellLevel:
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 2
+        spellLevel:
+        - 3
+        - 0
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 3
+        spellLevel:
+        - 3
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 4
+        spellLevel:
+        - 3
+        - 2
+        - 0
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 5
+        spellLevel:
+        - 3
+        - 3
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 6
+        spellLevel:
+        - 3
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 7
+        spellLevel:
+        - 3
+        - 3
+        - 2
+        - 0
+        - -1
+        - -1
+        - -1
+      - casterLevel: 8
+        spellLevel:
+        - 3
+        - 3
+        - 3
+        - 1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 9
+        spellLevel:
+        - 3
+        - 3
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+      - casterLevel: 10
+        spellLevel:
+        - 3
+        - 3
+        - 3
+        - 2
+        - 0
+        - -1
+        - -1
+      - casterLevel: 11
+        spellLevel:
+        - 3
+        - 3
+        - 3
+        - 3
+        - 1
+        - -1
+        - -1
+      - casterLevel: 12
+        spellLevel:
+        - 3
+        - 3
+        - 3
+        - 3
+        - 2
+        - -1
+        - -1
+      - casterLevel: 13
+        spellLevel:
+        - 3
+        - 3
+        - 3
+        - 3
+        - 2
+        - 0
+        - -1
+      - casterLevel: 14
+        spellLevel:
+        - 4
+        - 3
+        - 3
+        - 3
+        - 3
+        - 1
+        - -1
+      - casterLevel: 15
+        spellLevel:
+        - 4
+        - 4
+        - 3
+        - 3
+        - 3
+        - 2
+        - -1
+      - casterLevel: 16
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - 0
+      - casterLevel: 17
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+        - 3
+        - 1
+      - casterLevel: 18
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+        - 2
+      - casterLevel: 19
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+      - casterLevel: 20
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+    - casterClass: 1
+      casterLevelProgressions:
+      - casterLevel: 0
+        spellLevel:
+        - 3
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 1
+        spellLevel:
+        - 3
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 2
+        spellLevel:
+        - 4
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 3
+        spellLevel:
+        - 4
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 4
+        spellLevel:
+        - 5
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 5
+        spellLevel:
+        - 5
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 6
+        spellLevel:
+        - 5
+        - 3
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 7
+        spellLevel:
+        - 6
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 8
+        spellLevel:
+        - 6
+        - 4
+        - 3
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 9
+        spellLevel:
+        - 6
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 10
+        spellLevel:
+        - 6
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 11
+        spellLevel:
+        - 6
+        - 5
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 12
+        spellLevel:
+        - 6
+        - 5
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+      - casterLevel: 13
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+      - casterLevel: 14
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - -1
+        - -1
+      - casterLevel: 15
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+      - casterLevel: 16
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - -1
+      - casterLevel: 17
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+      - casterLevel: 18
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+      - casterLevel: 19
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 3
+      - casterLevel: 20
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+        - 4
+        - 4
+    - casterClass: 2
+      casterLevelProgressions:
+      - casterLevel: 0
+        spellLevel:
+        - 3
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 1
+        spellLevel:
+        - 3
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 2
+        spellLevel:
+        - 4
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 3
+        spellLevel:
+        - 4
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 4
+        spellLevel:
+        - 5
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 5
+        spellLevel:
+        - 5
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 6
+        spellLevel:
+        - 5
+        - 3
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 7
+        spellLevel:
+        - 6
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 8
+        spellLevel:
+        - 6
+        - 4
+        - 3
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 9
+        spellLevel:
+        - 6
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 10
+        spellLevel:
+        - 6
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 11
+        spellLevel:
+        - 6
+        - 5
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 12
+        spellLevel:
+        - 6
+        - 5
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+      - casterLevel: 13
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+      - casterLevel: 14
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - -1
+        - -1
+      - casterLevel: 15
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+      - casterLevel: 16
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - -1
+      - casterLevel: 17
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+      - casterLevel: 18
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+      - casterLevel: 19
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 3
+      - casterLevel: 20
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+        - 4
+        - 4
+    - casterClass: 3
+      casterLevelProgressions:
+      - casterLevel: 0
+        spellLevel:
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 1
+        spellLevel:
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 2
+        spellLevel:
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 3
+        spellLevel:
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 4
+        spellLevel:
+        - -1
+        - 0
+        - -1
+        - -1
+        - -1
+      - casterLevel: 5
+        spellLevel:
+        - -1
+        - 0
+        - -1
+        - -1
+        - -1
+      - casterLevel: 6
+        spellLevel:
+        - -1
+        - 1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 7
+        spellLevel:
+        - -1
+        - 1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 8
+        spellLevel:
+        - -1
+        - 1
+        - 0
+        - -1
+        - -1
+      - casterLevel: 9
+        spellLevel:
+        - -1
+        - 1
+        - 0
+        - -1
+        - -1
+      - casterLevel: 10
+        spellLevel:
+        - -1
+        - 1
+        - 1
+        - -1
+        - -1
+      - casterLevel: 11
+        spellLevel:
+        - -1
+        - 1
+        - 1
+        - 0
+        - -1
+      - casterLevel: 12
+        spellLevel:
+        - -1
+        - 1
+        - 1
+        - 1
+        - -1
+      - casterLevel: 13
+        spellLevel:
+        - -1
+        - 1
+        - 1
+        - 1
+        - -1
+      - casterLevel: 14
+        spellLevel:
+        - -1
+        - 2
+        - 1
+        - 1
+        - 0
+      - casterLevel: 15
+        spellLevel:
+        - -1
+        - 2
+        - 1
+        - 1
+        - 1
+      - casterLevel: 16
+        spellLevel:
+        - -1
+        - 2
+        - 2
+        - 1
+        - 1
+      - casterLevel: 17
+        spellLevel:
+        - -1
+        - 2
+        - 2
+        - 2
+        - 1
+      - casterLevel: 18
+        spellLevel:
+        - -1
+        - 3
+        - 2
+        - 2
+        - 1
+      - casterLevel: 19
+        spellLevel:
+        - -1
+        - 3
+        - 3
+        - 3
+        - 2
+      - casterLevel: 20
+        spellLevel:
+        - -1
+        - 3
+        - 3
+        - 3
+        - 3
+    - casterClass: 4
+      casterLevelProgressions:
+      - casterLevel: 0
+        spellLevel:
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 1
+        spellLevel:
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 2
+        spellLevel:
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 3
+        spellLevel:
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 4
+        spellLevel:
+        - -1
+        - 0
+        - -1
+        - -1
+        - -1
+      - casterLevel: 5
+        spellLevel:
+        - -1
+        - 0
+        - -1
+        - -1
+        - -1
+      - casterLevel: 6
+        spellLevel:
+        - -1
+        - 1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 7
+        spellLevel:
+        - -1
+        - 1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 8
+        spellLevel:
+        - -1
+        - 1
+        - 0
+        - -1
+        - -1
+      - casterLevel: 9
+        spellLevel:
+        - -1
+        - 1
+        - 0
+        - -1
+        - -1
+      - casterLevel: 10
+        spellLevel:
+        - -1
+        - 1
+        - 1
+        - -1
+        - -1
+      - casterLevel: 11
+        spellLevel:
+        - -1
+        - 1
+        - 1
+        - 0
+        - -1
+      - casterLevel: 12
+        spellLevel:
+        - -1
+        - 1
+        - 1
+        - 1
+        - -1
+      - casterLevel: 13
+        spellLevel:
+        - -1
+        - 1
+        - 1
+        - 1
+        - -1
+      - casterLevel: 14
+        spellLevel:
+        - -1
+        - 2
+        - 1
+        - 1
+        - 0
+      - casterLevel: 15
+        spellLevel:
+        - -1
+        - 2
+        - 1
+        - 1
+        - 1
+      - casterLevel: 16
+        spellLevel:
+        - -1
+        - 2
+        - 2
+        - 1
+        - 1
+      - casterLevel: 17
+        spellLevel:
+        - -1
+        - 2
+        - 2
+        - 2
+        - 1
+      - casterLevel: 18
+        spellLevel:
+        - -1
+        - 3
+        - 2
+        - 2
+        - 1
+      - casterLevel: 19
+        spellLevel:
+        - -1
+        - 3
+        - 3
+        - 3
+        - 2
+      - casterLevel: 20
+        spellLevel:
+        - -1
+        - 3
+        - 3
+        - 3
+        - 3
+    - casterClass: 5
+      casterLevelProgressions:
+      - casterLevel: 0
+        spellLevel:
+        - 4
+        - 0
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 1
+        spellLevel:
+        - 5
+        - 3
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 2
+        spellLevel:
+        - 6
+        - 4
+        - 0
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 3
+        spellLevel:
+        - 6
+        - 5
+        - 0
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 4
+        spellLevel:
+        - 6
+        - 6
+        - 3
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 5
+        spellLevel:
+        - 6
+        - 6
+        - 4
+        - 0
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 6
+        spellLevel:
+        - 6
+        - 6
+        - 5
+        - 3
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 7
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 4
+        - 0
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 8
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 5
+        - 3
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 9
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 6
+        - 4
+        - 0
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 10
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 6
+        - 5
+        - 3
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 11
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 4
+        - 0
+        - -1
+        - -1
+        - -1
+      - casterLevel: 12
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 5
+        - 3
+        - -1
+        - -1
+        - -1
+      - casterLevel: 13
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 4
+        - 0
+        - -1
+        - -1
+      - casterLevel: 14
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 5
+        - 3
+        - -1
+        - -1
+      - casterLevel: 15
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 4
+        - 0
+        - -1
+      - casterLevel: 16
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 5
+        - 3
+        - -1
+      - casterLevel: 17
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 4
+        - 0
+      - casterLevel: 18
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 5
+        - 3
+      - casterLevel: 19
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 4
+      - casterLevel: 20
+        spellLevel:
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+        - 6
+    - casterClass: 6
+      casterLevelProgressions:
+      - casterLevel: 0
+        spellLevel:
+        - 3
+        - 0
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 1
+        spellLevel:
+        - 4
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 2
+        spellLevel:
+        - 4
+        - 2
+        - 0
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 3
+        spellLevel:
+        - 4
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 4
+        spellLevel:
+        - 4
+        - 3
+        - 2
+        - 0
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 5
+        spellLevel:
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 6
+        spellLevel:
+        - 4
+        - 3
+        - 3
+        - 2
+        - 0
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 7
+        spellLevel:
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 8
+        spellLevel:
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - 0
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 9
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 10
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - 0
+        - -1
+        - -1
+        - -1
+      - casterLevel: 11
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 12
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - 0
+        - -1
+        - -1
+      - casterLevel: 13
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+      - casterLevel: 14
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - 0
+        - -1
+      - casterLevel: 15
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+      - casterLevel: 16
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - 0
+      - casterLevel: 17
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+      - casterLevel: 18
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+      - casterLevel: 19
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+        - 3
+      - casterLevel: 20
+        spellLevel:
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+        - 4
+  - spellCountType: 0
+    casterClasses:
+    - casterClass: 0
+      casterLevelProgressions:
+      - casterLevel: 0
+        spellLevel:
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 1
+        spellLevel:
+        - 4
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 2
+        spellLevel:
+        - 5
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 3
+        spellLevel:
+        - 6
+        - 3
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 4
+        spellLevel:
+        - 6
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 5
+        spellLevel:
+        - 6
+        - 4
+        - 3
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 6
+        spellLevel:
+        - 6
+        - 4
+        - 3
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 7
+        spellLevel:
+        - 6
+        - 4
+        - 4
+        - 2
+        - -1
+        - -1
+        - -1
+      - casterLevel: 8
+        spellLevel:
+        - 6
+        - 4
+        - 4
+        - 3
+        - -1
+        - -1
+        - -1
+      - casterLevel: 9
+        spellLevel:
+        - 6
+        - 4
+        - 4
+        - 3
+        - -1
+        - -1
+        - -1
+      - casterLevel: 10
+        spellLevel:
+        - 6
+        - 4
+        - 4
+        - 4
+        - 2
+        - -1
+        - -1
+      - casterLevel: 11
+        spellLevel:
+        - 6
+        - 4
+        - 4
+        - 4
+        - 3
+        - -1
+        - -1
+      - casterLevel: 12
+        spellLevel:
+        - 6
+        - 4
+        - 4
+        - 4
+        - 3
+        - -1
+        - -1
+      - casterLevel: 13
+        spellLevel:
+        - 6
+        - 4
+        - 4
+        - 4
+        - 4
+        - 2
+        - -1
+      - casterLevel: 14
+        spellLevel:
+        - 6
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+        - -1
+      - casterLevel: 15
+        spellLevel:
+        - 6
+        - 4
+        - 4
+        - 4
+        - 4
+        - 3
+        - -1
+      - casterLevel: 16
+        spellLevel:
+        - 6
+        - 5
+        - 4
+        - 4
+        - 4
+        - 4
+        - 2
+      - casterLevel: 17
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 4
+        - 4
+        - 4
+        - 3
+      - casterLevel: 18
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+      - casterLevel: 19
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 5
+        - 4
+        - 4
+      - casterLevel: 20
+        spellLevel:
+        - 6
+        - 5
+        - 5
+        - 5
+        - 5
+        - 5
+        - 4
+    - casterClass: 5
+      casterLevelProgressions:
+      - casterLevel: 0
+        spellLevel:
+        - 4
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 1
+        spellLevel:
+        - 4
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 2
+        spellLevel:
+        - 5
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 3
+        spellLevel:
+        - 5
+        - 3
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 4
+        spellLevel:
+        - 6
+        - 3
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 5
+        spellLevel:
+        - 6
+        - 4
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 6
+        spellLevel:
+        - 7
+        - 4
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 7
+        spellLevel:
+        - 7
+        - 5
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 8
+        spellLevel:
+        - 8
+        - 5
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 9
+        spellLevel:
+        - 8
+        - 5
+        - 4
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 10
+        spellLevel:
+        - 9
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 11
+        spellLevel:
+        - 9
+        - 5
+        - 5
+        - 4
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 12
+        spellLevel:
+        - 9
+        - 5
+        - 5
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+        - -1
+      - casterLevel: 13
+        spellLevel:
+        - 9
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 2
+        - -1
+        - -1
+        - -1
+      - casterLevel: 14
+        spellLevel:
+        - 9
+        - 5
+        - 5
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+        - -1
+      - casterLevel: 15
+        spellLevel:
+        - 9
+        - 5
+        - 5
+        - 4
+        - 4
+        - 4
+        - 3
+        - 2
+        - -1
+        - -1
+      - casterLevel: 16
+        spellLevel:
+        - 9
+        - 5
+        - 5
+        - 4
+        - 4
+        - 4
+        - 3
+        - 2
+        - 1
+        - -1
+      - casterLevel: 17
+        spellLevel:
+        - 9
+        - 5
+        - 5
+        - 4
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - -1
+      - casterLevel: 18
+        spellLevel:
+        - 9
+        - 5
+        - 5
+        - 4
+        - 4
+        - 4
+        - 3
+        - 3
+        - 2
+        - 1
+      - casterLevel: 19
+        spellLevel:
+        - 9
+        - 5
+        - 5
+        - 4
+        - 4
+        - 4
+        - 3
+        - 3
+        - 3
+        - 2
+      - casterLevel: 20
+        spellLevel:
+        - 9
+        - 5
+        - 5
+        - 4
+        - 4
+        - 4
+        - 3
+        - 3
+        - 3
+        - 3

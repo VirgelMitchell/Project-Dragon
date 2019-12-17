@@ -10,7 +10,7 @@ namespace RPG.Stats
     {
         [SerializeField] StatProgressionRate[] statProgressionRates;
 
-        Dictionary<string, Dictionary<string, float[]>> progressionLookup = new Dictionary<string, Dictionary<string, float[]>>();
+        Dictionary<string, Dictionary<string, float[]>> progressionLookup = null;
 
         public int GetStat(CharacterStat stat, ProgressionRate rate, int level)
         {

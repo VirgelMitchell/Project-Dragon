@@ -7,7 +7,7 @@ namespace RPG.Core
 
     public enum CasterClass
     {
-        cleric, druid, palidine, ranger, sorceror, wizard
+        bard, cleric, druid, palidine, ranger, sorceror, wizard
     }
 
     public enum CastingSpeed
@@ -17,7 +17,7 @@ namespace RPG.Core
 
     public enum CharacterStat
     {
-        attacks, baseSave
+        abilityScoreBonus, attacks, baseSave, feats, maxClassSkill, xPRequirement
     }
 
     public enum Hand
@@ -48,6 +48,11 @@ namespace RPG.Core
     public enum School
     {
         abjuration, conjuration, divination, enchantment, evokation, illusion, necromancy, transmutation, universal
+    }
+
+    public enum SpellCountType
+    {
+        spellsKnown, spellsPerDay
     }
 
     public enum SpellLevel

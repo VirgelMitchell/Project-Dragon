@@ -14,8 +14,10 @@ namespace RPG.Stats
             experiencePoints += xpReward;
         }
 
+        public int GetXP() { return experiencePoints; }
 
-    // ISabable Implementation
+
+    // ISavable Implementation
         public object CaptureState()
         {
             return experiencePoints;

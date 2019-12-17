@@ -67,7 +67,7 @@ namespace RPG.Combat
 
 
         // Public Methods
-        public bool CanAttack(GameObject candidate)
+        public bool isValidTarget(GameObject candidate)
         {
             if (candidate == null) { return false; }
             Health health = candidate.GetComponent<Health>();
@@ -123,17 +123,24 @@ namespace RPG.Combat
                 return;
             }
 
-            float weaponSpeed;
-            if (currentWeapon) { weaponSpeed = currentWeapon.GetSpeed(); }
-            else { weaponSpeed = currentSpell.GetSpeed(); }
-            int numOfAttacks = baseStats.GetAttacksPerRound();
-            float timeBetweenAttacks = Constant.meleeRound / Mathf.Min(numOfAttacks, weaponSpeed);
-            if (timeSinceLastAttack < timeBetweenAttacks) { return; }
+            if (!CanAttack()) { return; }
 
             animator.ResetTrigger("stopAttack");
             LookAt(opponent.position);
             animator.SetTrigger("attack");
             timeSinceLastAttack = 0f;
+        }
+
+        private bool CanAttack()
+        {
+            float weaponSpeed;
+            if (currentWeapon) { weaponSpeed = currentWeapon.GetSpeed(); }
+            else { weaponSpeed = currentSpell.GetSpeed(); }
+
+            int numOfAttacks = baseStats.GetAttacksPerRound();
+            float timeBetweenAttacks = Constant.meleeRound / Mathf.Min(numOfAttacks, weaponSpeed);
+            if (timeSinceLastAttack > timeBetweenAttacks) { return true; }
+            else { return false; }
         }
 
         private bool IsInRange()

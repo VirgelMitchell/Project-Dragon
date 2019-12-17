@@ -2,6 +2,8 @@ namespace RPG.Core
 {
     public struct Constant
     {
+        public const int maxSpellLevel = 9;
+
         public const float closeRange = 7.62f;
         public const float cRBonus = 1.524f;
         public const float longRange = 121.92f;
@@ -14,6 +16,8 @@ namespace RPG.Core
 
         public const string defaultSaveFile = "Save";
         public const string generatorObjName = "RandomeNumberGenerator";
+        public const string spellProgresssionPath = "Progression Tables/SpellProgression";
+        public const string statProgresssionPath = "Progression Tables/StatProgression";
         public const string tempGameObjName = "Temperary Objects";
         public const string weapName = "Weapon";
     }

@@ -88,6 +88,7 @@
      <Compile Include="Assets\Scripts\Stats\ExperienceTracker.cs" />
      <Compile Include="Assets\Scripts\Stats\Health.cs" />
      <Compile Include="Assets\Scripts\Stats\PlayerHealthDisplay.cs" />
+     <Compile Include="Assets\Scripts\Stats\SpellProgression.cs" />
      <Compile Include="Assets\Scripts\Stats\StatProgression.cs" />
      <Compile Include="Assets\Scripts\Stats\XPRewardProgression.cs" />
      <None Include="Assets\Asset Packs\Animations\README - Usage Rights for these assets 1.txt" />

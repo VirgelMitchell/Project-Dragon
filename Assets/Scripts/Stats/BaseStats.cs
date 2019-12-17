@@ -21,6 +21,7 @@ namespace RPG.Stats
         public int GetHP()                  { return baseHealth; }
         public int GetLevel()               { return currentLevel; }
         public int GetCasterLevel()         { return currentLevel; }
+        public bool GetNeedsToLevelUp()     { return currentLevel < GetXPLevel(); }
 
         public int GetXPReward(int attackerLevel)
         {
@@ -57,7 +58,7 @@ namespace RPG.Stats
             if (baseHealth <= 0) { baseHealth = GenerateHP(); }
         }
 
-        int GenerateHP()
+        private int GenerateHP()
         {
             int hitDie = characterClass.GetHitDieSize();
             if (currentLevel == 0) { return hitDie / 2; }
@@ -72,6 +73,26 @@ namespace RPG.Stats
                 }
                 return hitPoints;
             }
+        }
+
+        private int GetXPLevel()
+        {
+            if (currentLevel > 19) { return 20; }
+            int currentXP = GetComponent<ExperienceTracker>().GetXP();
+            int level = currentLevel;
+
+            bool levelIsMaxed = false;
+            while (!levelIsMaxed)
+            {
+                int goal = characterClass.GetNextLevel(level);
+                if (goal < currentXP)
+                {
+                    levelIsMaxed = true;
+                    continue;
+                }
+                level++;
+            }
+            return level;
         }
     }
 
