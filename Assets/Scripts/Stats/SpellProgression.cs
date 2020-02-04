@@ -55,13 +55,6 @@ namespace RPG.Stats
             }
         }
 
-        [System.Serializable]
-        public class SpellCountTypes
-        {
-            public SpellCountType spellCountType;
-            public CasterClassProgression[] casterClasses;
-        }
-
         private Dictionary<string, Dictionary<string, float[]>> BuildCasterClassLookup(SpellCountTypes spellCountType)
         {
             var casterClassLookup = new Dictionary<string, Dictionary<string, float[]>>();
@@ -72,13 +65,6 @@ namespace RPG.Stats
             return casterClassLookup;
         }
 
-        [System.Serializable]
-        public class CasterClassProgression
-        {
-            public CasterClass casterClass;
-            public CasterLevelProgression[] casterLevelProgressions;
-        }
-
         private Dictionary<string, float[]> BuildCasterLevelLookup(CasterClassProgression casterClass)
         {
             var casterLevelLookup = new Dictionary<string, float[]>();
@@ -87,6 +73,20 @@ namespace RPG.Stats
                 casterLevelLookup[casterLevel.ToString()] = casterLevel.spellLevel;
             }
             return casterLevelLookup;
+        }
+
+        [System.Serializable]
+        public class SpellCountTypes
+        {
+            public SpellCountType spellCountType;
+            public CasterClassProgression[] casterClasses;
+        }
+
+        [System.Serializable]
+        public class CasterClassProgression
+        {
+            public CasterClass casterClass;
+            public CasterLevelProgression[] casterLevelProgressions;
         }
 
         [System.Serializable]

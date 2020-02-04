@@ -35,6 +35,7 @@ namespace RPG.Stats
         {
             baseHP = GetComponent<BaseStats>().GetHP();
             if (currentHP == 0 && !isDead) { currentHP = baseHP; }
+            //Debug.Log(gameObject.name + ": Current Health = " + currentHP);
         }
 
         private void Update()

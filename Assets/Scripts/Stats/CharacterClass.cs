@@ -8,10 +8,10 @@ namespace RPG.Stats
     public class CharacterClass : ScriptableObject
     {
         // RPG.Core.Enumerators.PlayerClass
-        [SerializeField] PlayerClass characterClass;
+        [SerializeField] PlayerClass characterClass = PlayerClass.barbarian;
         [SerializeField] bool isCaster = false;
-        [SerializeField] int hitDieSize;
-        [SerializeField] int skillPointsPerLevel;
+        [SerializeField] int hitDieSize = 4;
+        [SerializeField] int skillPointsPerLevel = 2;
 
         [Header("Progression Rates")]   // RPG.Core.Enumerators.ProgressionRate
         [SerializeField] ProgressionRate attackProgressionRate;
@@ -23,12 +23,12 @@ namespace RPG.Stats
         int[] spellsPerDay;
 
         CasterClass casterClass;
-        SpellProgression spellProgression;
-        StatProgression statProgression;
+        SpellProgression spellProgression = null;
+        StatProgression statProgression = null;
 
 
     // Standard Methods
-        private void Start()
+        private void Awake()
         {
             statProgression = Resources.Load<StatProgression>(Constant.statProgresssionPath);
             if (isCaster)
@@ -48,7 +48,12 @@ namespace RPG.Stats
 
         public int GetAttacksPerRound(int level)
         {
-            return statProgression.GetStat(CharacterStat.attacks, attackProgressionRate, level);
+            return statProgression.GetStat(CharacterStat.attacksPerRound, attackProgressionRate, level);
+        }
+
+        public int GetAttackBonus(int level)
+        {
+            return statProgression.GetStat(CharacterStat.attackBonus, attackProgressionRate, level);
         }
 
         public int GetFortitudeBaseSave(int level)

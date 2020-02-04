@@ -40,6 +40,29 @@ MonoBehaviour:
       - 10
     - stat: 2
       levels:
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 2
+      - 2
+      - 2
+      - 2
+      - 2
+      - 2
+      - 2
+      - 2
+      - 2
+    - stat: 3
+      levels:
       - 0
       - 0
       - 0
@@ -87,6 +110,29 @@ MonoBehaviour:
       - 14
       - 15
     - stat: 2
+      levels:
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 2
+      - 2
+      - 2
+      - 2
+      - 2
+      - 2
+      - 2
+      - 3
+      - 3
+      - 3
+      - 3
+      - 3
+      - 3
+    - stat: 3
       levels:
       - 1
       - 1
@@ -159,6 +205,29 @@ MonoBehaviour:
       - 20
     - stat: 2
       levels:
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 1
+      - 2
+      - 2
+      - 2
+      - 2
+      - 2
+      - 3
+      - 3
+      - 3
+      - 3
+      - 3
+      - 4
+      - 4
+      - 4
+      - 4
+      - 4
+    - stat: 3
+      levels:
       - 2
       - 2
       - 3
@@ -180,7 +249,7 @@ MonoBehaviour:
       - 11
       - 11
       - 12
-    - stat: 3
+    - stat: 4
       levels:
       - 0
       - 1
@@ -203,7 +272,7 @@ MonoBehaviour:
       - 7
       - 7
       - 7
-    - stat: 4
+    - stat: 5
       levels:
       - 3
       - 4
@@ -226,7 +295,7 @@ MonoBehaviour:
       - 21
       - 22
       - 23
-    - stat: 5
+    - stat: 6
       levels:
       - 50
       - 1000

@@ -27,7 +27,7 @@ MonoBehaviour:
   isInstant: 1
   durration: 0
   maxDamagePerLevel: 6
-  effectPrefab: {fileID: 907725380061903264, guid: 65ab07484d99c6e40907c281f0c68492,
+  spellPrefab: {fileID: 907725380061903264, guid: 65ab07484d99c6e40907c281f0c68492,
     type: 3}
   animationController: {fileID: 22100000, guid: df7431425725b4d48b43ea76aac0a740,
     type: 2}

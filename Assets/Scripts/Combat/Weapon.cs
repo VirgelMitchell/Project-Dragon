@@ -10,7 +10,7 @@ namespace RPG.Combat
     // Variables
         [Header("Prefabs")]
         [SerializeField] AnimatorOverrideController weapAnimControl = null;
-        [SerializeField] GameObject equippedPrefab = null;
+        [SerializeField] GameObject weaponPrefab = null;
         [SerializeField] Projectile projectile = null;
 
         [Header("Stats")]
@@ -21,6 +21,7 @@ namespace RPG.Combat
         [Tooltip("number of attacks per melee round")]
         [SerializeField] int weaponSpeed = 0;
 
+        RNG generator;
 
     // Getter Methods
         public int GetDamage(int strBonus)  { return CalculateDamage(strBonus); }
@@ -31,15 +32,15 @@ namespace RPG.Combat
     // Public Methods
         public void EquipWeapon(Transform[] hands, Animator animator)
         {
-            if (!equippedPrefab || !weapAnimControl)
+            if (!weaponPrefab || !weapAnimControl)
             {
                 Debug.LogError("ORIO: Are you missing the Equipped Weapon Prefab or Animation Override Controller");
                 return;
             }
             Transform weapLocation = GetWeapTransform(hands);
-            GameObject weapon = Instantiate(equippedPrefab, weapLocation);
+            GameObject weapon = Instantiate(weaponPrefab, weapLocation);
             weapon.transform.parent = weapLocation;
-            weapon.name = Constant.weapName;
+            weapon.name = Constant.weaponName;
             animator.runtimeAnimatorController = weapAnimControl;
         }
 
@@ -47,7 +48,7 @@ namespace RPG.Combat
         {
             Vector3 startLoc = GetWeapTransform(hands).position;
             Projectile projectileInst = Instantiate(projectile, startLoc, Quaternion.identity);
-            projectileInst.transform.parent = GameObject.Find(Constant.tempGameObjName).transform;
+            projectileInst.transform.parent = GameObject.Find(Constant.temperaryGameObjectName).transform;
             projectileInst.SetTarget(target.GetComponent<Health>());
             projectileInst.SetRange(attackRange);
             projectileInst.SetDamage(CalculateDamage(strBonus));
@@ -58,8 +59,8 @@ namespace RPG.Combat
 
         public void DestoyWeapon(Transform[] hands)
         {
-            Transform oldWeap = hands[0].Find(Constant.weapName);
-            if (oldWeap == null) { oldWeap = hands[1].Find(Constant.weapName); }
+            Transform oldWeap = hands[0].Find(Constant.weaponName);
+            if (oldWeap == null) { oldWeap = hands[1].Find(Constant.weaponName); }
             if (oldWeap == null)
             {
                 Debug.LogWarning("No Weapon Found");
@@ -70,7 +71,7 @@ namespace RPG.Combat
         }
 
 
-        // Private Methods
+    // Private Methods
         private Transform GetWeapTransform(Transform[] hands)
         {
             Transform weapLocation;
@@ -81,8 +82,7 @@ namespace RPG.Combat
 
         private int CalculateDamage(int strBonus)
         {
-            RNG generator = GameObject.Find(Constant.generatorObjName).GetComponent<RNG>();
-
+            generator = GameObject.Find(Constant.generatorObjectName).GetComponent<RNG>();
             int damage = generator.GenerateNumber(maxDamage);
             int bonusDamage = strBonus;
             return damage + bonusDamage;

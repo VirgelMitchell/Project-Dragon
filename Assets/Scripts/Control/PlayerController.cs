@@ -31,7 +31,7 @@ namespace RPG.Control
         }
 
 
-        // Public Methods
+    // Public Methods
         public void ResetTimeSinceAttacked() { timeSinceLastAttacked = 0f; }
         public float GetTimeSinceLastAttacked() { return timeSinceLastAttacked; }
 
@@ -44,7 +44,7 @@ namespace RPG.Control
             {
                 CombatTarget candidate = hit.transform.GetComponent<CombatTarget>();
 
-                if (candidate == null)                          {  continue;  }
+                if (candidate == null)                              {  continue;  }
                 if (!fighter.isValidTarget(candidate.gameObject))   {  continue;  }
                 if (Input.GetMouseButton(0))
                 {

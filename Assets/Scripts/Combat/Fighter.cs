@@ -11,7 +11,7 @@ namespace RPG.Combat
         [SerializeField] int strBonus = 0;
         [Tooltip("0 = Right hand; 1 = Left hand")]
         [SerializeField] Transform[] hands = new Transform[2];
-        [SerializeField] string defaultWeaponName = "Weapons/Unarmed Attack";
+        [SerializeField] string defaultWeaponName = "Unarmed Attack";
         [SerializeField] string defaultSpellName = "";
 
         float timeSinceLastAttack = Mathf.Infinity;
@@ -36,8 +36,8 @@ namespace RPG.Combat
         {
             if (currentSpell == null && currentWeapon == null)
             {
-                Weapon defaultWeapon = Resources.Load<Weapon>(defaultWeaponName);
-                Spell defaultSpell = Resources.Load<Spell>(defaultSpellName);
+                Weapon defaultWeapon = Resources.Load<Weapon>(Constant.weaponResourcePath + defaultWeaponName);
+                Spell defaultSpell = Resources.Load<Spell>(Constant.spellResourcePath + defaultSpellName);
 
                 if (defaultWeaponName != "") { EquipWeapon(defaultWeapon); }
                 else if (defaultSpellName != "") { EquipSpell(defaultSpell); }
@@ -123,12 +123,13 @@ namespace RPG.Combat
                 return;
             }
 
-            if (!CanAttack()) { return; }
-
-            animator.ResetTrigger("stopAttack");
-            LookAt(opponent.position);
-            animator.SetTrigger("attack");
-            timeSinceLastAttack = 0f;
+            if (CanAttack())
+            {
+                animator.ResetTrigger("stopAttack");
+                LookAt(opponent.position);
+                animator.SetTrigger("attack");
+                timeSinceLastAttack = 0f;
+            }
         }
 
         private bool CanAttack()

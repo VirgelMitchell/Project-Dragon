@@ -111,12 +111,22 @@ PrefabInstance:
     - target: {fileID: 6307215787345520108, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: defaultWeaponName
-      value: Weapon/Enemy Short Bow
+      value: Enemy Short Bow
       objectReference: {fileID: 0}
     - target: {fileID: 1719256483601437966, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763598296802695377, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: pcClassStartLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763598296802695377, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: challengeRating
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3213661336957183992, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}

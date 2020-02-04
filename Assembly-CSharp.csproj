@@ -93,6 +93,7 @@
      <Compile Include="Assets\Scripts\Stats\XPRewardProgression.cs" />
      <None Include="Assets\Asset Packs\Animations\README - Usage Rights for these assets 1.txt" />
      <None Include="Assets\Asset Packs\Synty - Polygon Student Sample\README - Usage Rights for these assets.txt" />
+     <None Include="Assets\Game\Resources\ReadMe.txt" />
      <None Include="Assets\Asset Packs\SkySerie Freebie\Hdri setup.txt" />
  <Reference Include="Cinemachine">
  <HintPath>C:/Users/Vfirgel Mitchell/Documents/Udemy/Unity RPG Course/RPG_Project_Dragon/Project Dragon/Library/ScriptAssemblies/Cinemachine.dll</HintPath>

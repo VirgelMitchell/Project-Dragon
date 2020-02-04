@@ -25,6 +25,7 @@ namespace RPG.Control
         GameObject player;
         Fighter fighter;
         Mover mover;
+        RNG generator;
         Vector3 guardPosition;
 
         const float waypointTollerance = 0.5f;
@@ -41,6 +42,8 @@ namespace RPG.Control
 
         private void Start()
         {
+            generator = GameObject.Find(Constant.generatorObjectName).GetComponent<RNG>();
+            SetParanoia();
             ResumeRoutine();
         }
 
@@ -49,23 +52,10 @@ namespace RPG.Control
             if (GetComponent<Health>().GetIsDead()) { return; }
             timeSinceLastSawPlayer += Time.deltaTime;
 
-            if (DistanceToTarget() < chaseRadius)
-            {
-                AttackBehavior();
-            }
-            else if (timeSinceLastSawPlayer < paranoia)
-            {
-                if (paranoia == -1) { SetParanoia(); }
-                SuspicionBehavior();
-            }
-            else if (!HasDwealtEnough() && AtWaypoint())
-            {
-                DwellingBehaviour();
-            }
-            else
-            {
-                ResumeRoutine();
-            }
+            if      (DistanceToTarget() < chaseRadius)      { AttackBehavior(); }
+            else if (timeSinceLastSawPlayer < paranoia)     { SuspicionBehavior(); }
+            else if (!HasDwealtEnough() && AtWaypoint())    { DwellingBehaviour(); }
+            else                                            { ResumeRoutine(); }
         }
 
 
@@ -113,7 +103,7 @@ namespace RPG.Control
 
         private void SetParanoia()
         {
-            paranoia = GameObject.Find(Constant.generatorObjName).GetComponent<RNG>().GenerateNumber(10);
+            paranoia = generator.GenerateNumber(10);
         }
 
         private float DistanceToTarget()

@@ -5,7 +5,6 @@ namespace RPG.Stats
 {
     public class BaseStats : MonoBehaviour
     {
-        [SerializeField] XPRewardProgression xPRewardProgression;
         [SerializeField] PlayerClass playerClass;
         [Range(0, 20)] [SerializeField] int pcClassStartLevel = 0;
 
@@ -13,25 +12,49 @@ namespace RPG.Stats
                  "Leave blank for characters with PC Class Levels")]
         [SerializeField] string challengeRating = "";
 
+        [Header("References")]
+        [SerializeField] XPRewardProgression xPRewardProgression;
+
         int baseHealth = 0;
         int currentLevel = -1;
 
         CharacterClass characterClass;
+        RNG generator;
 
-        public int GetHP()                  { return baseHealth; }
-        public int GetLevel()               { return currentLevel; }
-        public int GetCasterLevel()         { return currentLevel; }
-        public bool GetNeedsToLevelUp()     { return currentLevel < GetXPLevel(); }
 
-        public int GetXPReward(int attackerLevel)
+    // Standard Methods
+        private void Awake()
         {
-            if (challengeRating == "") { challengeRating = currentLevel.ToString(); }
-            return xPRewardProgression.GetReward(challengeRating, attackerLevel);
+            characterClass = Resources.Load<CharacterClass>("Character Classes/" + playerClass.ToString());
+            xPRewardProgression = Resources.Load<XPRewardProgression>(Constant.xPRewardsPath);
+            generator = GameObject.Find(Constant.generatorObjectName).GetComponent<RNG>();
+            if (currentLevel < 0) { currentLevel = pcClassStartLevel; }
+            if (baseHealth <= 0) { baseHealth = GenerateHP(); }
+        }
+
+
+    // Getter Methods
+        public int GetLevel()                       { return currentLevel; }
+        public int GetCasterLevel()                 { return currentLevel; }
+        public bool GetNeedsToLevelUp()             { return currentLevel < GetXPLevel(); }
+        public int GetXPReward(int attackerLevel)   { return GenerateXPReward(attackerLevel); }
+
+        public int GetHP()
+        {
+            if (baseHealth <= 0) { baseHealth = GenerateHP(); }
+            return baseHealth;
+        }
+
+        public int GetAttackBonus()
+        {
+            int bonus = characterClass.GetAttackBonus(currentLevel);
+            return bonus;
         }
 
         public int GetAttacksPerRound()
         {
-            return characterClass.GetAttacksPerRound(currentLevel);
+            int bonus = characterClass.GetAttacksPerRound(currentLevel);
+            return bonus;
         }
 
         public int GetSave(SaveType saveType)
@@ -39,23 +62,26 @@ namespace RPG.Stats
             switch (saveType)
             {
                 case SaveType.fortitude:
-                    return characterClass.GetFortitudeBaseSave(currentLevel);
+                    int fortbonus = characterClass.GetFortitudeBaseSave(currentLevel);
+                    return fortbonus;
                 case SaveType.reflex:
-                    return characterClass.GetReflexBaseSave(currentLevel);
+                    int reflexbonus = characterClass.GetReflexBaseSave(currentLevel);
+                    return reflexbonus;
                 case SaveType.will:
-                    return characterClass.GetReflexBaseSave(currentLevel);
+                    int willbonus = characterClass.GetWillBaseSave(currentLevel);
+                    return willbonus;
                 default:
-                    Debug.LogError("Invalid Save Type!!");
+                    Debug.LogError(gameObject.name + ": Invalid Save Type!!");
                     return 0;
             };
         }
 
-        private void Awake()
-        {
-            characterClass = Resources.Load<CharacterClass>("Character Classes/" + playerClass.ToString());
 
-            if (currentLevel < 0) { currentLevel = pcClassStartLevel; }
-            if (baseHealth <= 0) { baseHealth = GenerateHP(); }
+        // Private Methods
+        private int GenerateXPReward(int attackerLevel)
+        {
+            if (challengeRating == "") { challengeRating = currentLevel.ToString(); }
+            return xPRewardProgression.GetReward(challengeRating, attackerLevel);
         }
 
         private int GenerateHP()
@@ -65,11 +91,13 @@ namespace RPG.Stats
             else if (currentLevel == 1) { return hitDie; }
             else
             {
-                RNG generator = GameObject.FindObjectOfType<RNG>();
                 int hitPoints = hitDie;
+                int roll;
                 for (int hd = 2; hd <= currentLevel; hd++)
                 {
-                    hitPoints += generator.GenerateNumber(hitDie);
+                    roll = generator.GenerateNumber(hitDie);
+                    //print("roll " + hd + ": " + roll);
+                    hitPoints += roll;
                 }
                 return hitPoints;
             }

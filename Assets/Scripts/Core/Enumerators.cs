@@ -17,7 +17,7 @@ namespace RPG.Core
 
     public enum CharacterStat
     {
-        abilityScoreBonus, attacks, baseSave, feats, maxClassSkill, xPRequirement
+        abilityScoreBonus, attackBonus, attacksPerRound, baseSave, feats, maxClassSkill, xPRequirement
     }
 
     public enum Hand

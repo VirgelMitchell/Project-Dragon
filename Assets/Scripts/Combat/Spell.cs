@@ -28,7 +28,7 @@ namespace RPG.Combat
         [SerializeField] int maxDamagePerLevel = 0;
 
         [Header("Prefabs")]
-        [SerializeField] GameObject effectPrefab = null;
+        [SerializeField] GameObject spellPrefab = null;
         [SerializeField] AnimatorOverrideController animationController = null;
 
         CastSpell castSpell;
@@ -41,16 +41,16 @@ namespace RPG.Combat
             switch (range)
             {
                 case Range.close:
-                    return Constant.closeRange + (Constant.cRBonus * (level / 2));
+                    return Constant.closeRange + (Constant.closeRangeBonus * (level / 2));
 
                 case Range.far:
-                    return Constant.longRange + (Constant.lRBonus * level);
+                    return Constant.longRange + (Constant.longRangeBonus * level);
 
                 case Range.given:
                     return givenRange;
 
                 case Range.medium:
-                    return Constant.mediumRange + (Constant.mRBonus * level);
+                    return Constant.mediumRange + (Constant.mediumRangeBonus * level);
 
                 case Range.touch:
                     return Constant.touchRange;
@@ -70,27 +70,27 @@ namespace RPG.Combat
     // Public Methods
         public void EquipSpell(Transform[] hands, Animator animator)
         {
-            if (!effectPrefab || !animationController)
+            if (!spellPrefab || !animationController)
             {
                 Debug.LogError("ORIO: Are you missing the Effect Prefab or Animation Override Controller");
                 return;
             }
-            GameObject spell = Instantiate(new GameObject(spellName), hands[0]);
-            spell.transform.parent = hands[0].transform;
+            GameObject spell = Instantiate(spellPrefab, hands[0]);
+            spell.transform.parent = hands[0];
             spell.name = spellName;
             animator.runtimeAnimatorController = animationController;
         }
 
         public void CastSpell ( GameObject instigater, Transform target,
-                                Transform[] hands, int level)
+                                Transform[] hands, int casterLevel)
         {
-            if (spellLevel < level) { return; }
+            if (spellLevel > casterLevel) { return; }
             Vector3 startLoc = hands[0].position;
-            GameObject spellObject = Instantiate(effectPrefab, startLoc, Quaternion.identity);
-            spellObject.transform.parent = GameObject.Find(Constant.tempGameObjName).transform;
+            GameObject spellObject = Instantiate(spellPrefab, startLoc, Quaternion.identity);
+            spellObject.transform.parent = GameObject.Find(Constant.temperaryGameObjectName).transform;
             CastSpell spellInstance = spellObject.GetComponent<CastSpell>();
             spellInstance.InitializeTargeting(target.GetComponent<Health>(), numberOfTargets, cantMiss, attackType, areaOfEffect);
-            spellInstance.InitializeSpell(CalculateDamage(level), GetRange(level), Constant.speed, instigater);
+            spellInstance.InitializeSpell(CalculateDamage(casterLevel), GetRange(casterLevel), Constant.speed, instigater);
             // TODO decrease mana/magical energy count in inventory
         }
 
@@ -104,17 +104,16 @@ namespace RPG.Combat
                 return;
             }
             oldSpell.name = "OldSpell";
-            Destroy(oldSpell.gameObject);
+            Destroy( oldSpell.gameObject);
         }
 
 
     // Private Methods
         private int CalculateDamage(int level)
         {
-            RNG generator = GameObject.Find(Constant.generatorObjName).GetComponent<RNG>();
-
+            RNG generator = GameObject.Find(Constant.generatorObjectName).GetComponent<RNG>();
             int damage = 0;
-            for (int count = 0; count < level; count++)
+            for (int count = 1; count <= level; count++)
             {
                 damage += generator.GenerateNumber(maxDamagePerLevel);
             }

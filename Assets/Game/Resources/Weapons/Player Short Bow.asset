@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player Short Bow
   m_EditorClassIdentifier: 
   weapAnimControl: {fileID: 22100000, guid: d1c3a373f277d814f88f1cfbbbc68a73, type: 2}
-  equippedPrefab: {fileID: 3671132605656441007, guid: f8fc06ebd74f29043b3ff960d92bfa8f,
+  weaponPrefab: {fileID: 3671132605656441007, guid: f8fc06ebd74f29043b3ff960d92bfa8f,
     type: 3}
   projectile: {fileID: 1446835832812727987, guid: 0d694447a05b20040ad03b2ac8bc8899,
     type: 3}

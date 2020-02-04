@@ -1,4 +1,5 @@
 using System.Collections;
+using RPG.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,7 +16,7 @@ namespace RPG.SceneManagement
 
         GameObject player;
         Portal[] gates;
-
+        RNG generator;
         Scene destination;
 
     // Constants
@@ -30,6 +31,11 @@ namespace RPG.SceneManagement
         {
             player = GameObject.FindWithTag("Player");
             gates = FindObjectsOfType<Portal>();
+        }
+
+        private void Start()
+        {
+            generator = GameObject.Find(Constant.generatorObjectName).GetComponent<RNG>();
         }
 
         private void Update()

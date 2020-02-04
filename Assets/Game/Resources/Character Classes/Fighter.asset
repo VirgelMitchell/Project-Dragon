@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 548ff5bd59c99384f98ec31cb4ac0610, type: 3}
-  m_Name: Fighter
+  m_Name: fighter
   m_EditorClassIdentifier: 
   characterClass: 4
+  isCaster: 0
+  hitDieSize: 10
+  skillPointsPerLevel: 4
   attackProgressionRate: 1
   fortitudeSaveProgressionRate: 1
   reflexSaveProgressionRate: 0
   willSaveProgressionRate: 2
-  statProgression: {fileID: 11400000, guid: d18eec4222f368e44a994029815ca161, type: 2}
-  hitDieSize: 10
-  skillPointsPerLevel: 4

@@ -236,10 +236,25 @@ PrefabInstance:
       propertyPath: hands.Array.data[1]
       value: 
       objectReference: {fileID: 5399926544510791212}
+    - target: {fileID: 4380707127442314328, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: defaultWeaponName
+      value: Unarmed Attack
+      objectReference: {fileID: 0}
     - target: {fileID: 118765547127298034, guid: c46bf355de73c7b42842986ec621931a,
         type: 3}
       propertyPath: m_Speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643811608449984869, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: playerClass
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643811608449984869, guid: c46bf355de73c7b42842986ec621931a,
+        type: 3}
+      propertyPath: challengeRating
+      value: 1/2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c46bf355de73c7b42842986ec621931a, type: 3}

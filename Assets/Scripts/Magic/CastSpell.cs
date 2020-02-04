@@ -29,6 +29,7 @@ namespace RPG.Magic
     // Basic Methods
         void Start()
         {
+            Debug.Log("initializing spell: " + this.name);
             if (!castingEffect)
             {
                 Debug.LogError("ORIO: No Casting Effect Loaded!");
@@ -84,6 +85,8 @@ namespace RPG.Magic
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.gameObject.tag == "Player") { return; }
+
             Health candidate = other.GetComponent<Health>();
             if (candidate != target || candidate.GetIsDead()) { return; }
             InstantiateDamageEffect();
