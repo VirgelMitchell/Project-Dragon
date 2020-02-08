@@ -85,6 +85,7 @@ namespace RPG.Magic
 
         private void OnTriggerEnter(Collider other)
         {
+            if (!target) { return; }
             if (other.gameObject.tag == "Player") { return; }
 
             Health candidate = other.GetComponent<Health>();

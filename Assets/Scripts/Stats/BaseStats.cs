@@ -34,8 +34,10 @@ namespace RPG.Stats
 
 
     // Getter Methods
-        public int GetLevel()                       { return currentLevel; }
         public int GetCasterLevel()                 { return currentLevel; }
+        public CharacterClass GetCharacterClass()   { return characterClass; }
+        public int GetCurrentXP()                   { return GetComponent<ExperienceTracker>().GetXP(); }
+        public int GetLevel()                       { return currentLevel; }
         public bool GetNeedsToLevelUp()             { return currentLevel < GetXPLevel(); }
         public int GetXPReward(int attackerLevel)   { return GenerateXPReward(attackerLevel); }
 

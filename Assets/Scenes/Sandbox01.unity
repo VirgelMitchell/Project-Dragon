@@ -6470,49 +6470,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 35
       objectReference: {fileID: 0}
-    - target: {fileID: 119272739305151439, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
+    - target: {fileID: 1927929363949585599, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
         type: 3}
-      propertyPath: m_CameraDistance
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 63557847912099488, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
+      propertyPath: rng
+      value: 
+      objectReference: {fileID: 683729866}
+    - target: {fileID: 196663876195793282, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
         type: 3}
-      propertyPath: startingLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7099554838103546777, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Player: 100 %'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7099554838103546777, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7099554838103546777, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.608
-      objectReference: {fileID: 0}
-    - target: {fileID: 7099554838103546777, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.93931884
-      objectReference: {fileID: 0}
-    - target: {fileID: 7099554838103546777, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.944
-      objectReference: {fileID: 0}
-    - target: {fileID: 7099554838103546777, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 7099554838103546777, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: m_FontData.m_MinSize
+      propertyPath: characterLevel
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4520694140946283632, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
@@ -6525,56 +6490,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Health Display
       objectReference: {fileID: 0}
-    - target: {fileID: 3977186390664231120, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
+    - target: {fileID: 119272739305151439, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
         type: 3}
-      propertyPath: m_Text
-      value: 'Enemy: 100 %'
+      propertyPath: m_CameraDistance
+      value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 3977186390664231120, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
+    - target: {fileID: 63557847912099488, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
         type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3977186390664231120, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.7216981
-      objectReference: {fileID: 0}
-    - target: {fileID: 3977186390664231120, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.7216981
-      objectReference: {fileID: 0}
-    - target: {fileID: 3977186390664231120, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: m_Color.a
+      propertyPath: startingLevel
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3977186390664231120, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3977186390664231120, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 3977186390664231120, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: m_FontData.m_MinSize
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 196663876195793282, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: characterLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1927929363949585599, guid: 4d6e05b6954921c458e97c9a1c93f4b2,
-        type: 3}
-      propertyPath: rng
-      value: 
-      objectReference: {fileID: 683729866}
     m_RemovedComponents:
     - {fileID: 119272739305151439, guid: 4d6e05b6954921c458e97c9a1c93f4b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4d6e05b6954921c458e97c9a1c93f4b2, type: 3}
@@ -7081,16 +7006,16 @@ PrefabInstance:
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 585930875}
-    - target: {fileID: 6307215787345520108, guid: 5b6f488b082580247b1b7a0e9dbf9112,
-        type: 3}
-      propertyPath: defaultWeaponName
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5763598296802695377, guid: 5b6f488b082580247b1b7a0e9dbf9112,
         type: 3}
       propertyPath: rng
       value: 
       objectReference: {fileID: 683729866}
+    - target: {fileID: 6307215787345520108, guid: 5b6f488b082580247b1b7a0e9dbf9112,
+        type: 3}
+      propertyPath: defaultWeaponName
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b6f488b082580247b1b7a0e9dbf9112, type: 3}
 --- !u!1001 &9074758405326495675

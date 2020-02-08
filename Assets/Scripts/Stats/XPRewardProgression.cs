@@ -17,8 +17,8 @@ namespace RPG.Stats
             if (attackerLevel > 20) { attackerLevel = 20; }
 
             if (!lookupTable.ContainsKey(challengeRating)) { return 0; }
-            int[] rewardLevels = lookupTable[challengeRating];
 
+            int[] rewardLevels = lookupTable[challengeRating];
             if (rewardLevels.Length < attackerLevel + 1) { return 0; }
 
             return rewardLevels[attackerLevel];

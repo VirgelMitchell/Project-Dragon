@@ -57,7 +57,6 @@
      <Compile Include="Assets\Scripts\Cinematics\ControlRemover.cs" />
      <Compile Include="Assets\Scripts\Combat\Collectable.cs" />
      <Compile Include="Assets\Scripts\Combat\CombatTarget.cs" />
-     <Compile Include="Assets\Scripts\Combat\EnemyHealthDisplay.cs" />
      <Compile Include="Assets\Scripts\Combat\Fighter.cs" />
      <Compile Include="Assets\Scripts\Combat\Projectile.cs" />
      <Compile Include="Assets\Scripts\Combat\Spell.cs" />
@@ -74,6 +73,9 @@
      <Compile Include="Assets\Scripts\Core\ISavable.cs" />
      <Compile Include="Assets\Scripts\Core\PersistantObjectSpawner.cs" />
      <Compile Include="Assets\Scripts\Core\RNG.cs" />
+     <Compile Include="Assets\Scripts\GUI\EnemyHealthDisplay.cs" />
+     <Compile Include="Assets\Scripts\GUI\PlayerHealthDisplay.cs" />
+     <Compile Include="Assets\Scripts\GUI\PlayerXPDisplay.cs" />
      <Compile Include="Assets\Scripts\Magic\CastSpell.cs" />
      <Compile Include="Assets\Scripts\Movement\Mover.cs" />
      <Compile Include="Assets\Scripts\Movement\SpeedModifier.cs" />
@@ -87,7 +89,6 @@
      <Compile Include="Assets\Scripts\Stats\CharacterClass.cs" />
      <Compile Include="Assets\Scripts\Stats\ExperienceTracker.cs" />
      <Compile Include="Assets\Scripts\Stats\Health.cs" />
-     <Compile Include="Assets\Scripts\Stats\PlayerHealthDisplay.cs" />
      <Compile Include="Assets\Scripts\Stats\SpellProgression.cs" />
      <Compile Include="Assets\Scripts\Stats\StatProgression.cs" />
      <Compile Include="Assets\Scripts\Stats\XPRewardProgression.cs" />
