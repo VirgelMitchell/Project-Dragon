@@ -6,37 +6,22 @@ namespace RPG.GUI
 {
     public class PlayerXPDisplay : MonoBehaviour
     {
-        int currentXP;
-        int nextLevelGoal;
-        float xPDecimal;
-
-        BaseStats playerBaseStats;
-        Text healthText;
+        ExperienceTracker xPTracker;
+        Text xPText;
 
         private void Awake()
         {
-            playerBaseStats = GameObject.FindWithTag("Player").GetComponent<BaseStats>();
-            healthText = GetComponent<Text>();
+            xPTracker = GameObject.FindWithTag("Player").GetComponent<ExperienceTracker>();
+            xPText = GetComponent<Text>();
         }
 
         private void Update()
         {
-            currentXP = playerBaseStats.GetCurrentXP();
-            nextLevelGoal = GetGoal();
-            xPDecimal = (float)currentXP/nextLevelGoal;
-            //if (currentXP > nextLevelGoal) { xPDecimal = 1; }
-
-            print("Current XP: " + currentXP);
-            print("XP Goal: " + nextLevelGoal);
-            print("XP Decimal: " + xPDecimal);
-
-            healthText.text = string.Format("XP: {0:p0}", xPDecimal);
-        }
-
-        int GetGoal()
-        {
-            CharacterClass characterClass = playerBaseStats.GetCharacterClass();
-            return characterClass.GetNextLevel(playerBaseStats.GetLevel());
+            int currentXP = xPTracker.GetXP();
+            int nextLevelGoal = xPTracker.GetXPGoal();
+            float xPDecimal = (float)currentXP/nextLevelGoal;
+            if (currentXP > nextLevelGoal) { xPDecimal = 1f; }
+            xPText.text = string.Format("XP: {0:p0}", xPDecimal);
         }
     }
 }

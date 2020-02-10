@@ -1,3 +1,4 @@
+using System;
 using RPG.Core;
 using UnityEngine;
 
@@ -7,14 +8,29 @@ namespace RPG.Stats
     {
         [SerializeField] int experiencePoints = 0;
 
+        int xPGoal;
+        bool needsToLevelUp = false;
 
-    // Public Methods
+
+        // Public Methods
+        public int GetXP()                  { return experiencePoints; }
+        public int GetXPGoal()              { return xPGoal; }
+        public bool GetNeedsToLevelUp()     { return needsToLevelUp; }
+
         public void RewardXP(int xpReward)
         {
             experiencePoints += xpReward;
+            CheckNeedToLevelUp();
         }
 
-        public int GetXP() { return experiencePoints; }
+        public void SetXPGoal(int goal)
+        {
+            xPGoal = goal;
+            CheckNeedToLevelUp();
+        }
+
+        // Private Methods
+        private void CheckNeedToLevelUp()   { needsToLevelUp = experiencePoints > xPGoal; }
 
 
     // ISavable Implementation

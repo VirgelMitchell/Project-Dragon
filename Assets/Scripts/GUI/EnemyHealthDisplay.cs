@@ -25,7 +25,11 @@ namespace RPG.GUI
             }
             else
             {
-                healthText.text = string.Format("Enemy: {0:p0}", target.GetComponent<Health>().GetHealth());
+                Health health = target.GetComponent<Health>();
+                int currentHP = health.GetHealth();
+                int baseHP = health.GetBaseHP();
+                float hPDecimal = (float)currentHP / baseHP;
+                healthText.text = string.Format("Enemy: {0:p0}", hPDecimal);
             }
         }
     }

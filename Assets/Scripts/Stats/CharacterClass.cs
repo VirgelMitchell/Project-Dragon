@@ -30,11 +30,11 @@ namespace RPG.Stats
     // Standard Methods
         private void Awake()
         {
-            statProgression = Resources.Load<StatProgression>(Constant.statProgresssionPath);
+            statProgression = Resources.Load<StatProgression>(ResourcePath.statProgresssionPath);
             if (isCaster)
             {
                 SetCasterClass();
-                spellProgression = Resources.Load<SpellProgression>(Constant.spellProgresssionPath);
+                spellProgression = Resources.Load<SpellProgression>(ResourcePath.spellProgresssionPath);
                 if (spellsKnown == null || spellsPerDay == null) { ResetSpellCounts(0); }
             }
         }
@@ -43,52 +43,48 @@ namespace RPG.Stats
     // Getter Methods
         public PlayerClass GetClass()   { return characterClass; }
         public int GetHitDieSize()      { return hitDieSize; }
+        public int GetSkillPoints()     { return skillPointsPerLevel; }
         public int[] GetSpellsKnown()   { return spellsKnown; }
         public int[] GetSpellsPerDay()  { return spellsPerDay; }
 
-        public int GetAttacksPerRound(int level)
+        public int GetStat(CharacterStat stat, int level)
         {
-            return statProgression.GetStat(CharacterStat.attacksPerRound, attackProgressionRate, level);
+            ProgressionRate rate;
+            switch (stat)
+            {
+                case CharacterStat.attackBonus:
+                    rate = attackProgressionRate;
+                    break;
+                case CharacterStat.attacksPerRound:
+                    rate = attackProgressionRate;
+                    break;
+                default:
+                    rate = ProgressionRate.good;
+                    break;
+            }
+            return statProgression.GetStat(stat, rate, level);
         }
 
-        public int GetAttackBonus(int level)
+        public int GetBaseSave(SaveType save, int level)
         {
-            return statProgression.GetStat(CharacterStat.attackBonus, attackProgressionRate, level);
-        }
-
-        public int GetFortitudeBaseSave(int level)
-        {
-            return statProgression.GetStat(CharacterStat.baseSave, fortitudeSaveProgressionRate, level);
-        }
-
-        public int GetReflexBaseSave(int level)
-        {
-            return statProgression.GetStat(CharacterStat.baseSave, reflexSaveProgressionRate, level);
-        }
-
-        public int GetWillBaseSave(int level)
-        {
-            return statProgression.GetStat(CharacterStat.baseSave, willSaveProgressionRate, level);
-        }
-
-        public int GetNextLevel(int level)
-        {
-            return statProgression.GetStat(CharacterStat.xPRequirement, ProgressionRate.good, level);
-        }
-
-        public int GetMaxClassSkillPoints(int level)
-        {
-            return statProgression.GetStat(CharacterStat.maxClassSkill, ProgressionRate.good, level);
-        }
-
-        public int GetMaxNumberOfFeats(int level)
-        {
-            return statProgression.GetStat(CharacterStat.feats, ProgressionRate.good, level);
-        }
-
-        public int GetCumulativeAbilityScoreBonus(int level)
-        {
-            return statProgression.GetStat(CharacterStat.abilityScoreBonus, ProgressionRate.good, level);
+            CharacterStat stat = CharacterStat.baseSave;
+            ProgressionRate rate;
+            switch (save)
+            {
+                case SaveType.fortitude:
+                    rate = fortitudeSaveProgressionRate;
+                    break;
+                case SaveType.reflex:
+                    rate = reflexSaveProgressionRate;
+                    break;
+                case SaveType.will:
+                    rate = willSaveProgressionRate;
+                    break;
+                default:
+                    Debug.LogError("Invalid Save Type!");
+                    return 0;
+            }
+            return statProgression.GetStat(stat, rate, level);
         }
 
 

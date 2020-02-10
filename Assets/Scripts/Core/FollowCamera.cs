@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RPG.Core
 {
@@ -8,6 +9,7 @@ namespace RPG.Core
 
         void LateUpdate()
         {
+            if (SceneManager.GetActiveScene().name == SceneNames.camp) { return; }
             transform.position = target.position;
         }
     }

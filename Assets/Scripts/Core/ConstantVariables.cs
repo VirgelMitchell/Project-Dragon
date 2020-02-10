@@ -18,12 +18,32 @@ namespace RPG.Core
         public const string generatorObjectName = "NumberGenerator";
         public const string temperaryGameObjectName = "Temperary Objects";
         public const string weaponName = "Weapon";
+    }
 
-    // Resource Paths
+    public struct ResourcePath
+    {
         public const string spellProgresssionPath = "Progression Tables/SpellProgression";
         public const string spellResourcePath = "Spells/";
         public const string statProgresssionPath = "Progression Tables/StatProgression";
         internal static string weaponResourcePath = "Weapons/";
         public const string xPRewardsPath = "Progression Tables/XP Rewards";
+    }
+
+    public struct TimeDefination
+    {
+        public const float minute   =       60f;
+        public const float hour     =     3600f;
+        public const float day      =    86400f;
+        public const float week     =   604800f;
+        public const float month    =  2629845.8136288f;
+        public const float year     = 31558149.7635456f;
+    }
+
+    public struct SceneNames
+    {
+        public const string splash = "00_Splash";
+        public const string transitional = "01_Transition Scene";
+        public const string camp = "02_Camp";
+        public const string main = "05_Main Scene";
     }
 }

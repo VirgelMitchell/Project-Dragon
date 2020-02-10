@@ -36,8 +36,8 @@ namespace RPG.Combat
         {
             if (currentSpell == null && currentWeapon == null)
             {
-                Weapon defaultWeapon = Resources.Load<Weapon>(Constant.weaponResourcePath + defaultWeaponName);
-                Spell defaultSpell = Resources.Load<Spell>(Constant.spellResourcePath + defaultSpellName);
+                Weapon defaultWeapon = Resources.Load<Weapon>(ResourcePath.weaponResourcePath + defaultWeaponName);
+                Spell defaultSpell = Resources.Load<Spell>(ResourcePath.spellResourcePath + defaultSpellName);
 
                 if (defaultWeaponName != "") { EquipWeapon(defaultWeapon); }
                 else if (defaultSpellName != "") { EquipSpell(defaultSpell); }
@@ -138,7 +138,7 @@ namespace RPG.Combat
             if (currentWeapon) { weaponSpeed = currentWeapon.GetSpeed(); }
             else { weaponSpeed = currentSpell.GetSpeed(); }
 
-            int numOfAttacks = baseStats.GetAttacksPerRound();
+            int numOfAttacks = baseStats.GetStat(CharacterStat.attacksPerRound);
             float timeBetweenAttacks = Constant.meleeRound / Mathf.Min(numOfAttacks, weaponSpeed);
             if (timeSinceLastAttack > timeBetweenAttacks) { return true; }
             else { return false; }

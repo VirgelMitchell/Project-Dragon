@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Asset Packs\Campfire Pack\Script\SwitchView.cs" />
      <Compile Include="Assets\Scripts\Cinematics\CinematicTrigger.cs" />
      <Compile Include="Assets\Scripts\Cinematics\ControlRemover.cs" />
      <Compile Include="Assets\Scripts\Combat\Collectable.cs" />
@@ -74,6 +75,7 @@
      <Compile Include="Assets\Scripts\Core\PersistantObjectSpawner.cs" />
      <Compile Include="Assets\Scripts\Core\RNG.cs" />
      <Compile Include="Assets\Scripts\GUI\EnemyHealthDisplay.cs" />
+     <Compile Include="Assets\Scripts\GUI\LevelUpRoutine.cs" />
      <Compile Include="Assets\Scripts\GUI\PlayerHealthDisplay.cs" />
      <Compile Include="Assets\Scripts\GUI\PlayerXPDisplay.cs" />
      <Compile Include="Assets\Scripts\Magic\CastSpell.cs" />

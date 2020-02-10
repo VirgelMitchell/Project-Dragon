@@ -15,7 +15,7 @@ namespace RPG.Stats
         [Header("References")]
         [SerializeField] XPRewardProgression xPRewardProgression;
 
-        int baseHealth = 0;
+        int baseHitPoints = 0;
         int currentLevel = -1;
 
         CharacterClass characterClass;
@@ -26,57 +26,38 @@ namespace RPG.Stats
         private void Awake()
         {
             characterClass = Resources.Load<CharacterClass>("Character Classes/" + playerClass.ToString());
-            xPRewardProgression = Resources.Load<XPRewardProgression>(Constant.xPRewardsPath);
+            xPRewardProgression = Resources.Load<XPRewardProgression>(ResourcePath.xPRewardsPath);
             generator = GameObject.Find(Constant.generatorObjectName).GetComponent<RNG>();
             if (currentLevel < 0) { currentLevel = pcClassStartLevel; }
-            if (baseHealth <= 0) { baseHealth = GenerateHP(); }
+            if (baseHitPoints <= 0) { baseHitPoints = GenerateHP(); }
+            if (gameObject.tag == "Player")
+                { GetComponent<ExperienceTracker>().SetXPGoal(GetStat(CharacterStat.xPRequirement)); }
         }
 
 
     // Getter Methods
         public int GetCasterLevel()                 { return currentLevel; }
         public CharacterClass GetCharacterClass()   { return characterClass; }
-        public int GetCurrentXP()                   { return GetComponent<ExperienceTracker>().GetXP(); }
         public int GetLevel()                       { return currentLevel; }
-        public bool GetNeedsToLevelUp()             { return currentLevel < GetXPLevel(); }
         public int GetXPReward(int attackerLevel)   { return GenerateXPReward(attackerLevel); }
 
-        public int GetHP()
+        public bool NeedsToLevelUp()
+            { return GetComponent<ExperienceTracker>().GetNeedsToLevelUp(); }
+
+        public int GetStat(CharacterStat stat)
+            { return characterClass.GetStat(stat, currentLevel); }
+
+        public int GetSave(SaveType save)
+            { return characterClass.GetBaseSave(save, currentLevel); }
+
+        public int GetBaseHP()
         {
-            if (baseHealth <= 0) { baseHealth = GenerateHP(); }
-            return baseHealth;
+            if (baseHitPoints <= 0) { baseHitPoints = GenerateHP(); }
+            return baseHitPoints;
         }
 
-        public int GetAttackBonus()
-        {
-            int bonus = characterClass.GetAttackBonus(currentLevel);
-            return bonus;
-        }
-
-        public int GetAttacksPerRound()
-        {
-            int bonus = characterClass.GetAttacksPerRound(currentLevel);
-            return bonus;
-        }
-
-        public int GetSave(SaveType saveType)
-        {
-            switch (saveType)
-            {
-                case SaveType.fortitude:
-                    int fortbonus = characterClass.GetFortitudeBaseSave(currentLevel);
-                    return fortbonus;
-                case SaveType.reflex:
-                    int reflexbonus = characterClass.GetReflexBaseSave(currentLevel);
-                    return reflexbonus;
-                case SaveType.will:
-                    int willbonus = characterClass.GetWillBaseSave(currentLevel);
-                    return willbonus;
-                default:
-                    Debug.LogError(gameObject.name + ": Invalid Save Type!!");
-                    return 0;
-            };
-        }
+        public void AddLevel() { currentLevel++; }
+        public void AddHealth(int points) { baseHitPoints += points; }
 
 
         // Private Methods
@@ -104,26 +85,5 @@ namespace RPG.Stats
                 return hitPoints;
             }
         }
-
-        private int GetXPLevel()
-        {
-            if (currentLevel > 19) { return 20; }
-            int currentXP = GetComponent<ExperienceTracker>().GetXP();
-            int level = currentLevel;
-
-            bool levelIsMaxed = false;
-            while (!levelIsMaxed)
-            {
-                int goal = characterClass.GetNextLevel(level);
-                if (goal < currentXP)
-                {
-                    levelIsMaxed = true;
-                    continue;
-                }
-                level++;
-            }
-            return level;
-        }
     }
-
 }

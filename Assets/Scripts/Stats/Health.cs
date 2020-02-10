@@ -33,7 +33,7 @@ namespace RPG.Stats
 
         private void Start()
         {
-            baseHP = GetComponent<BaseStats>().GetHP();
+            baseHP = GetComponent<BaseStats>().GetBaseHP();
             if (currentHP == 0 && !isDead) { currentHP = baseHP; }
             //Debug.Log(gameObject.name + ": Current Health = " + currentHP);
         }
@@ -58,12 +58,17 @@ namespace RPG.Stats
         }
 
 
-    // Getter Methods
-        public bool GetIsDead()         { return isDead; }
+        // Getter Methods
+        public bool GetIsDead()     { return isDead; }
+        public int GetHealth()      { return currentHP; }
+        public int GetBaseHP()      { return baseHP; }
 
-        public float GetHealth()
+        public void AddHealth(int points)
         {
-            return (float)currentHP / baseHP;
+            if (baseHP == 0) { return; }
+            float healthPercentage = (float)currentHP / baseHP;
+            baseHP += points;
+            currentHP += Mathf.RoundToInt(points * healthPercentage);
         }
 
 
